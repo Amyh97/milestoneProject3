@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Sansita+Swashed:wght@500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "PT Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    overflow: auto;
+    background-color: #f8bbd0;
+}
+/*--- header across website ---*/
+
+header {
+    background-color: #c48b9f;
+}
+
+header h1 {
+    font-family: "Sansita Swashed", sans-serif;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+header h3 {
+    font-family: "PT Sans", sans-serif;
+    font-size :24px;
+}
+
+.logo {
+
+}
+
+.logo {
+    display: inline-block;
+    height: auto;
+    max-width: 50px !important;
+    margin-left: 0;
+
+}
+
+. logo a {
+    width: 100%;
+    height: auto;
+}
