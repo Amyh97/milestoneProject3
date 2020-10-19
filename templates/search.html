@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+{% for recipe in recipes %}
+<div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{recipes.name}}</h5>
+            <p class="card-text">{{recipes.notes}}</p>
+            <a href="#" class="btn btn-primary">View Recipe</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

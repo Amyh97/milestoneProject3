@@ -11,17 +11,17 @@
 </head>
 <body>
     <header>
-        <div class="row">
+        <div class="row no-gutters">
             <div class="col-md-3 logo">
-            <a href="{{for_url(browse_recipes)}}"><img src="static/images/logo.png"></a>
+            <a href="{{url_for('browse_recipes')}}"><img src="static/images/logo.png"></a>
             </div>    
             <div class="col-md-6">
                 <h1>Home Cooking <span><h4>...from our kitchen to yours</h4></span> </h1>
             </div>
             <div class="col-md-3">
-            <button class="btn my-btn"><a href="#">Add</a></button> 
-            <button class="btn my-btn"><a href="{{for_url(browse_recipes)}}">Browse</a></button> 
-            <button class="btn my-btn"><a href="#">Search</a></button>            
+            <button class="btn my-btn"><a href="{{url_for('add_recipe')}}">Add</a></button> 
+            <button class="btn my-btn"><a href="{{url_for('browse_recipes')}}">Browse</a></button> 
+            <button class="btn my-btn"><a href="{{url_for('search_recipes')}}">Search</a></button>            
             </div>
         </div>
      </header>
