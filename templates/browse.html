@@ -47,7 +47,7 @@
             <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
             <div class="card-body">
                 <h5 class="card-title">Italian food</h5>
-                <a href="{{url_for('search_recipes')}}" id="italian" class="btn my-btn">Search...</a>
+                <button onclick="add_cuisine()" type="button" class="btn my-btn"><a href="#" id="italian">Search...</a></button>
             </div>
         </div>
     </div>
@@ -55,8 +55,8 @@
         <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="">
             <div class="card-body">
-                <h5 class="card-title">Rice Dishes</h5>
-                <a href="{{url_for('search_recipes',carbs=rice)}}" class="btn my-btn">Search...</a>
+                <h5 class="card-title">Rice</h5>
+                <button onclick="add_carbs()" type="button" class="btn my-btn"><a href="#" id="rice">Search...</a></button>
             </div>
         </div>
     </div>
@@ -64,55 +64,12 @@
         <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="">
             <div class="card-body">
-                <h5 class="card-title">Vegetarian Meals</h5>
-                <a href="{{url_for('search_recipes', diet=vegetarian)}}" class="btn my-btn">Search...</a>
+                <h5 class="card-title">Pasta</h5>
+                <button onclick="add_carbs()" type="button" class="btn my-btn"><a href="#" id="pasta">Search...</a></button>
             </div>
+            
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Mexican Food</h5>
-                <a href="{{url_for('search_recipes',cuisine=mexican)}}" class="btn my-btn">Search...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Lamb Dishes</h5>
-                <a href="{{url_for('search_recipes',orotien=lamb)}}" class="btn my-btn">Search...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Lactose Free</h5>
-                <a href="{{url_for('search_recipes',diet=lactose_free)}}" class="btn my-btn">Search...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <img src="" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Pasta Dishes</h5>
-                <a href="{{url_for('search_recipes',carbs=pasta)}}" class="btn my-btn">Search...</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Beef Dishes</h5>
-                <a href="{{url_for('search_recipes',protien=beef)}}" class="btn my-btn">Search...</a>
-            </div>
-        </div>
-    </div>
+   
 </div> 
 {% endblock %}
