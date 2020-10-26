@@ -11,11 +11,11 @@ var carbs=[];
 
 $("#rice").innerHTML=carbs;
 function add_carbs() {
-        carbs.push("rice");
+        carbs.concat("rice");
        console.log(carbs);
     } 
 $("#pasta").innerHTML=carbs;
 function add_carbs() {
-        carbs.push("pasta");
+        carbs.concat("pasta");
        console.log(carbs);
     }

@@ -1,15 +1,63 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-<div class="col-md-3">
-    <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">hello</h5>
-            <p class="card-text">wolrd</p>
-            <a href="#" class="btn btn-primary">View Recipe</a>
-        </div>
-    </div>
+    <form  method="POST" action="">
+        <label for="cuisine">Choose type of cuisine:</label>
+        <select name="cuisine" id="cuisine" multiple required>
+            <option value="mediterranean">Mediterranean</option>
+            <option value="english">English</option>
+            <option value="indian">Indian</option>
+            <option value="chinese">Chinese</option>
+            <option value="mexican">Mexican</option>
+            <option value="american">American</option>
+            <option value="italian">Italian</option>
+        </select>
+        <label for="protein">Choose type of protein:</label>
+        <select name="protein" id="protein" multiple required>
+            <option value="fish">Fish</option>
+            <option value="poultry">Poultry</option>
+            <option value="beef">Beef</option>
+            <option value="pork">Pork</option>
+            <option value="lamb">Lamb</option>
+            <option value="other">Other</option>
+            <option value="none">None</option>
+        </select>
+        <label for="carbs">Choose source of carbs:</label>
+        <select name="carbs" id="carbs" multiple required>
+            <option value="rice">Rice</option>
+            <option value="pasta">Pasta</option>
+            <option value="potato">Potato</option>
+            <option value="bread">Bread</option>
+            <option value="grain">Grains/Pulps</option>
+            <option value="none">None</option>
+        </select>
+        <label for="diet">Dietary requirements</label>
+        <select name="diet" id="diet" multiple required>
+            <option value="gluten free">Gluten Free</option>
+            <option value="lactose free">Lactose Free</option>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="none">None</option>
+        </select>
+        <label for="allergies">Any allergens?</label>
+        <select name="allergies" id="allergies" multiple required>
+            <option value="egg">Egg</option>
+            <option value="nuts">Nuts</option>
+            <option value="shellfish">Shellfish</option>
+            <option value="wheat">Wheat</option>
+            <option value="soy">Soy</option>
+            <option value="gelatine">Gelatine</option>
+            <option value="none">None</option>
+        </select>
+        <button class="btn my-btn" type="submit">Search</button>
+    </form>
 </div>
+<div class="row">
+    {% for recipe in recipes %}
+    <div class="col-md-3">
+        <h3> {{recipe.name}}</h3>
+        <p>{{recipe.notes}}</p>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

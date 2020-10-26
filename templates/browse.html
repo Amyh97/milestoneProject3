@@ -47,7 +47,9 @@
             <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
             <div class="card-body">
                 <h5 class="card-title">Italian food</h5>
-                <button onclick="add_cuisine()" type="button" class="btn my-btn"><a href="#" id="italian">Search...</a></button>
+                <form method="POST">
+                    <button  type="button" class="btn my-btn" value="'cuisine':italian"><a href="{{url_for('search_recipes')}}" id="italian">Search...</a></button>
+                </form>
             </div>
         </div>
     </div>

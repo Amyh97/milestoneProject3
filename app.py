@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 from flask import Flask, render_template, redirect, request
 from os import path
@@ -21,9 +23,17 @@ def browse_recipes():
     return render_template("browse.html")
 
 
-@app.route('/search_recipes', methods=["GET"])
+@app.route('/search_recipes/', methods=["POST", "GET"])
 def search_recipes():
-    return render_template('search.html')
+    cuisine = request.form.get('cuisine')
+    protein = request.form.get('protein')
+    carbs = request.form.get('carbs')
+    diet = request.form.get('diet')
+    allergies = request.form.get('allergies')
+    return render_template('search.html', recipies=mongo.db.recipies.find({'$or': [
+                            {'cuisine':cuisine}, {'protein':protein},
+                            {'carbs':carbs}, {'diet':diet},
+                            {'allergies':allergies}]}))
 
 
 @app.route('/add_recipe')
