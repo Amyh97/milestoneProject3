@@ -10,7 +10,7 @@ if path.exists("env.py"):
 
 
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = 'recipes'
+app.config['MONGO_DBNAME'] = 'milestoneProject'
 MONGO_URI = os.environ.get("MONGO_URI")
 app.config['MONGO_URI'] = MONGO_URI
 mongo = PyMongo(app)
@@ -20,7 +20,7 @@ recipes = mongo.db.recipes
 @app.route('/')
 @app.route('/browse_recipes')
 def browse_recipes():
-    return render_template("browse.html")
+    return render_template("browse.html", rec=mongo.db.recipes.find())
 
 
 @app.route('/search_recipes/', methods=["POST", "GET"])
@@ -30,10 +30,10 @@ def search_recipes():
     carbs = request.form.get('carbs')
     diet = request.form.get('diet')
     allergies = request.form.get('allergies')
-    return render_template('search.html', recipies=mongo.db.recipies.find({'$or': [
-                            {'cuisine':cuisine}, {'protein':protein},
-                            {'carbs':carbs}, {'diet':diet},
-                            {'allergies':allergies}]}))
+    return render_template('search.html', recipes=mongo.db.recipes.find({
+                            'cuisine': cuisine, 'protein': protein,
+                            'carbs': carbs, 'diet': diet,
+                            'allergies': allergies}))
 
 
 @app.route('/add_recipe')

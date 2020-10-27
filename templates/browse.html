@@ -48,7 +48,7 @@
             <div class="card-body">
                 <h5 class="card-title">Italian food</h5>
                 <form method="POST">
-                    <button  type="button" class="btn my-btn" value="'cuisine':italian"><a href="{{url_for('search_recipes')}}" id="italian">Search...</a></button>
+                    <button  type="submit" class="btn my-btn" value="'cuisine':italian"><a href="{{url_for('search_recipes')}}" id="italian">Search...</a></button>
                 </form>
             </div>
         </div>
@@ -62,6 +62,7 @@
             </div>
         </div>
     </div>
+
     <div class="col-md-3">
         <div class="card" style="width: 18rem;">
             <img src="..." class="card-img-top" alt="">
@@ -73,5 +74,10 @@
         </div>
     </div>
    
-</div> 
+</div>
+    aaa
+    {% for r in rec %}
+        {{ r }}bbb
+    {% endfor %}
+    aaa 
 {% endblock %}
