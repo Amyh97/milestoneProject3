@@ -2,52 +2,57 @@
 {% block content %}
 <div class="row">
     <form  method="POST">
-        <label for="cuisine">Choose type of cuisine:</label>
-        <select name="cuisine" id="cuisine" multiple required>
-            <option value="mediterranean">Mediterranean</option>
-            <option value="english">English</option>
-            <option value="indian">Indian</option>
-            <option value="chinese">Chinese</option>
-            <option value="mexican">Mexican</option>
-            <option value="american">American</option>
-            <option value="italian">Italian</option>
+        <label for="cuisine" id="cusisne">Choose type of cuisine:</label>
+        <select name="cuisine" id="cuisine">
+            <option value="select" disabled selected>--Select--</option>
+            <option value="mediterranean" id="mediterranean">Mediterranean</option>
+            <option value="english" id="english">English</option>
+            <option value="indian" id="indian">Indian</option>
+            <option value="chinese" id="chinese">Chinese</option>
+            <option value="mexican" id="mexican">Mexican</option>
+            <option value="american" id="american">American</option>
+            <option value="italian" id="italian">Italian</option>
         </select>
         <label for="protein">Choose type of protein:</label>
-        <select name="protein" id="protein" multiple required>
-            <option value="fish">Fish</option>
-            <option value="poultry">Poultry</option>
-            <option value="beef">Beef</option>
-            <option value="pork">Pork</option>
-            <option value="lamb">Lamb</option>
-            <option value="other">Other</option>
-            <option value="none">None</option>
+        <select name="protein" id="protein">
+            <option value="select" disabled selected>--Select--</option>
+            <option value="fish" id="fish">Fish</option>
+            <option value="poultry" id="poultry">Poultry</option>
+            <option value="beef" id="beef">Beef</option>
+            <option value="pork" id="pork">Pork</option>
+            <option value="lamb" id="lamb">Lamb</option>
+            <option value="other" id="other">Other</option>
+            <option value="no-protein" id="no-protein">None</option>
         </select>
         <label for="carbs">Choose source of carbs:</label>
-        <select name="carbs" id="carbs" multiple required>
-            <option value="rice">Rice</option>
-            <option value="pasta">Pasta</option>
-            <option value="potato">Potato</option>
-            <option value="bread">Bread</option>
-            <option value="grain">Grains/Pulps</option>
-            <option value="none">None</option>
+        <select name="carbs" id="carbs">
+            <option value="select" disabled selected>--Select--</option>
+            <option value="rice" id="rice">Rice</option>
+            <option value="pasta" id="pasta">Pasta</option>
+            <option value="potato" id="potato">Potato</option>
+            <option value="bread" id="bread">Bread</option>
+            <option value="grain" id="grain">Grains/Pulps</option>
+            <option value="none" id="no-carbs">None</option>
         </select>
         <label for="diet">Dietary requirements</label>
-        <select name="diet" id="diet" multiple required>
+        <select name="diet" id="diet">
+            <option value="select" disabled selected>--Select--</option>
             <option value="gluten free">Gluten Free</option>
             <option value="lactose free">Lactose Free</option>
             <option value="vegetarian">Vegetarian</option>
             <option value="vegan">Vegan</option>
-            <option value="none">None</option>
+            <option value="no-diet">None</option>
         </select>
         <label for="allergies">Any allergens?</label>
-        <select name="allergies" id="allergies" multiple required>
+        <select name="allergies" id="allergies">
+            <option value="select" disabled selected>--Select--</option>
             <option value="egg">Egg</option>
             <option value="nuts">Nuts</option>
             <option value="shellfish">Shellfish</option>
             <option value="wheat">Wheat</option>
             <option value="soy">Soy</option>
             <option value="gelatine">Gelatine</option>
-            <option value="none">None</option>
+            <option value="no-allergies">None</option>
         </select>
         <button class="btn my-btn" type="submit">Search</button>
     </form>
