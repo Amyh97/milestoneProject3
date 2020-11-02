@@ -36,7 +36,58 @@ def search_recipes():
                             'allergies': allergies}))
 
 
-@app.route('/add_recipe')
+@app.route('/search_italian')
+def search_italian():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                            {'cuisine':'italian'}))
+
+
+@app.route('/search_rice')
+def search_rice():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                            {'carbs':'rice'}))
+
+
+@app.route('/search_vegetarian')
+def search_pasta():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                        {'diet':'vegetarian'}))
+
+@app.route('/search_pasta')
+def search_vegetarian():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                        {'carbs':'pasta'}))
+
+
+@app.route('/search_med')
+def search_med():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                        {'cuisine':'mediterranean'}))
+
+
+@app.route('/search_beef')
+def search_beef():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                        {'protein':'beef'}))
+
+
+@app.route('/search_poultry')
+def search_poultry():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                        {'protein':'poultry'}))
+
+
+@app.route('/search_lactose')
+def search_lactose():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                        {'diet':'lactose free'}))
+
+@app.route('/search_mexican')
+def search_med():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                        {'cuisine':'mexican'}))
+
+@app.route('/add_recipe', methods=["POST", "GET"])
 def add_recipe():
     return "hello world"
 

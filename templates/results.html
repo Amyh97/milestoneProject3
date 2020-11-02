@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+    {% for recipe in recipes %}
+    <div class="col-md-3">
+        <h3> {{recipe.name}}</h3>
+        <p>{{recipe.notes}}</p>
+    </div>
+    {% endfor %}
+
+{% endblock %}

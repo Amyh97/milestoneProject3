@@ -42,42 +42,78 @@
 <!--- end carousel code-->
 <!--- category cards, bootstrap cards-->
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="card" style="width: 18rem;">
             <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
             <div class="card-body">
-                <h5 class="card-title">Italian food</h5>
-                <form method="POST">
-                    <button  type="submit" class="btn my-btn"><a href="{{url_for('search_recipes')}}" id="italian">Search...</a></button>
-                </form>
+                    <h5 class="card-title" id="italian">Italian food</h5>
+                    <button type="submit" class="btn my-btn"><a href="{{url_for('search_italian')}}">Search...</a></button>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="">
+            <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
             <div class="card-body">
-                <h5 class="card-title">Rice</h5>
-                <button onclick="add_carbs()" type="button" class="btn my-btn"><a href="#" id="rice">Search...</a></button>
+                    <h5 class="card-title" id="rice">Rice meals</h5>
+                    <button type="submit" class="btn my-btn"><a href="{{url_for('search_rice')}}">Search...</a></button>   
             </div>
         </div>
     </div>
-
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="">
+            <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
             <div class="card-body">
-                <h5 class="card-title">Pasta</h5>
-                <button onclick="add_carbs()" type="button" class="btn my-btn"><a href="#" id="pasta">Search...</a></button>
+                    <h5 class="card-title" id="vegetarian">Vegetarian Meals</h5>
+                    <button type="submit" class="btn my-btn"><a href="{{url_for('search_vegetarian')}}">Search...</a></button>   
             </div>
-            
         </div>
     </div>
-   
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
+            <div class="card-body">
+                    <h5 class="card-title" id="pasta">Pasta Dishes</h5>
+                    <button type="submit" class="btn my-btn"><a href="{{url_for('search_pasta')}}">Search...</a></button>   
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
+            <div class="card-body">
+                    <h5 class="card-title" id="mediterranean">Mediterranean Dishes</h5>
+                    <button type="submit" class="btn my-btn"><a href="{{url_for('search_med')}}">Search...</a></button>   
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
+            <div class="card-body">
+                    <h5 class="card-title" id="beef">Beef Dishes</h5>
+                    <button type="submit" class="btn my-btn"><a href="{{url_for('search_beef')}}">Search...</a></button>   
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
+            <div class="card-body">
+                    <h5 class="card-title" id="poultry">Poultry Dishes</h5>
+                    <button type="submit" class="btn my-btn"><a href="{{url_for('search_poultry')}}">Search...</a></button>   
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
+            <div class="card-body">
+                    <h5 class="card-title" id="mexican">Mexican meals</h5>
+                    <button type="submit" class="btn my-btn"><a href="{{url_for('search_mexican')}}">Search...</a></button>   
+            </div>
+        </div>
+    </div>
 </div>
-    aaa
-    {% for r in rec %}
-        {{ r }}bbb
-    {% endfor %}
-    aaa 
+
 {% endblock %}
