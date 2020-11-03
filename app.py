@@ -82,10 +82,18 @@ def search_lactose():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'diet':'lactose free'}))
 
+
 @app.route('/search_mexican')
-def search_med():
+def search_mexican():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'cuisine':'mexican'}))
+
+
+@app.route('/search_pork')
+def search_pork():
+    return render_template('results.html', recipes=mongo.db.recipes.find(
+                            {'protein':'pork'}))
+
 
 @app.route('/add_recipe', methods=["POST", "GET"])
 def add_recipe():
