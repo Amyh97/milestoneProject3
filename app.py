@@ -35,7 +35,7 @@ def search_recipes():
                             'carbs': carbs, 'diet': diet,
                             'allergies': allergies}))
 
-
+#! methods for browse page to sort by 1 thing
 @app.route('/search_italian')
 def search_italian():
     return render_template('results.html', recipes=mongo.db.recipes.find(
@@ -96,10 +96,18 @@ def search_pork():
 
 
 @app.route('/add_recipe', methods=["POST", "GET"])
-def add_recipe():
-    return "hello world"
+def add_recipe(new_recipe):
+        cuisine = request.form.get('cuisine'),
+        protein = request.form.get('protein'),
+        carbs = request.form.get('carbs'),
+        diet = request.form.get('diet'),
+        allergies = request.form.get('allergies')
+        return render_template('add.html', recipes=mongo.db.recipes.insert_one({
+                            'cuisine': cuisine, 'protein': protein,
+                            'carbs': carbs, 'diet': diet,
+                            'allergies': allergies})
 
 
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),
-            debug=True)
+    app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT'
+            )), debug=True)

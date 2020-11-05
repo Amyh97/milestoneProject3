@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+    <button class="btn my-btn"><a href="{{url_for(('browse_recipes'))}}">Back</a></button>
     <div class="row">
     {% for recipe in recipes %}
     <div class="col-md-3">
