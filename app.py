@@ -49,12 +49,12 @@ def search_rice():
 
 
 @app.route('/search_vegetarian')
-def search_pasta():
+def search_vegetarian():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'diet':'vegetarian'}))
 
 @app.route('/search_pasta')
-def search_vegetarian():
+def search_pasta():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'carbs':'pasta'}))
 
@@ -96,7 +96,7 @@ def search_pork():
 
 
 @app.route('/add_recipe', methods=["POST", "GET"])
-def add_recipe(new_recipe):
+def add_recipe():
         cuisine = request.form.get('cuisine'),
         protein = request.form.get('protein'),
         carbs = request.form.get('carbs'),
@@ -105,7 +105,8 @@ def add_recipe(new_recipe):
         return render_template('add.html', recipes=mongo.db.recipes.insert_one({
                             'cuisine': cuisine, 'protein': protein,
                             'carbs': carbs, 'diet': diet,
-                            'allergies': allergies})
+                            'allergies': allergies,
+                            'approved':True}))
 
 
 if __name__ == '__main__':
