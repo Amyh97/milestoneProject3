@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, url_for
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -97,16 +97,9 @@ def search_pork():
 
 @app.route('/add_recipe', methods=["POST", "GET"])
 def add_recipe():
-        cuisine = request.form.get('cuisine'),
-        protein = request.form.get('protein'),
-        carbs = request.form.get('carbs'),
-        diet = request.form.get('diet'),
-        allergies = request.form.get('allergies')
-        return render_template('add.html', recipes=mongo.db.recipes.insert_one({
-                            'cuisine': cuisine, 'protein': protein,
-                            'carbs': carbs, 'diet': diet,
-                            'allergies': allergies,
-                            'approved':True}))
+        recipes = mongo.db.recipes
+        recipes.insert_one(request.form.to_dict())
+        return(request.url)
 
 
 if __name__ == '__main__':
