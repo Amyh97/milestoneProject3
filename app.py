@@ -23,7 +23,7 @@ def browse_recipes():
     return render_template("browse.html", rec=mongo.db.recipes.find())
 
 
-@app.route('/search_recipes/', methods=["POST", "GET"])
+@app.route('/search_recipes', methods=["POST", "GET"])
 def search_recipes():
     cuisine = request.form.get('cuisine')
     protein = request.form.get('protein')
@@ -32,8 +32,8 @@ def search_recipes():
     allergies = request.form.get('allergies')
     return render_template('search.html', recipes=mongo.db.recipes.find({
                             'cuisine': cuisine, 'protein': protein,
-                            'carbs': carbs, 'diet': diet,
-                            'allergies': allergies}))
+                            'carbs': carbs, 'diet': diet
+                            }))
 
 #! methods for browse page to sort by 1 thing
 @app.route('/search_italian')
@@ -95,11 +95,13 @@ def search_pork():
                             {'protein':'pork'}))
 
 
+#! add recipes.html
+
 @app.route('/add_recipe', methods=["POST", "GET"])
 def add_recipe():
         recipes = mongo.db.recipes
         recipes.insert_one(request.form.to_dict())
-        return(request.url)
+        return render_template('add.html')
 
 
 if __name__ == '__main__':
