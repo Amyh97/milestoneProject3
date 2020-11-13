@@ -44,3 +44,9 @@ header h3 {
     width: 100%;
     height: auto;
 }
+
+/*--- show and hide cards with recipes on ---*/
+
+.hidden {
+    display: none
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, request
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -20,7 +20,7 @@ recipes = mongo.db.recipes
 @app.route('/')
 @app.route('/browse_recipes')
 def browse_recipes():
-    return render_template("browse.html", rec=mongo.db.recipes.find())
+    return render_template("browse.html", recipes=mongo.db.recipes.find())
 
 
 @app.route('/search_recipes', methods=["POST", "GET"])
@@ -29,79 +29,80 @@ def search_recipes():
     protein = request.form.get('protein')
     carbs = request.form.get('carbs')
     diet = request.form.get('diet')
-    allergies = request.form.get('allergies')
     return render_template('search.html', recipes=mongo.db.recipes.find({
                             'cuisine': cuisine, 'protein': protein,
                             'carbs': carbs, 'diet': diet
                             }))
 
-#! methods for browse page to sort by 1 thing
+
+# methods for browse page to sort by 1 thing
 @app.route('/search_italian')
 def search_italian():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                            {'cuisine':'italian'}))
+                            {'cuisine': 'italian'}))
 
 
 @app.route('/search_rice')
 def search_rice():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                            {'carbs':'rice'}))
+                            {'carbs': 'rice'}))
 
 
 @app.route('/search_vegetarian')
 def search_vegetarian():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'diet':'vegetarian'}))
+                        {'diet': 'vegetarian'}))
+
 
 @app.route('/search_pasta')
 def search_pasta():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'carbs':'pasta'}))
+                        {'carbs': 'pasta'}))
 
 
 @app.route('/search_med')
 def search_med():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'cuisine':'mediterranean'}))
+                        {'cuisine': 'mediterranean'}))
 
 
 @app.route('/search_beef')
 def search_beef():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'protein':'beef'}))
+                        {'protein': 'beef'}))
 
 
 @app.route('/search_poultry')
 def search_poultry():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'protein':'poultry'}))
+                        {'protein': 'poultry'}))
 
 
 @app.route('/search_lactose')
 def search_lactose():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'diet':'lactose free'}))
+                        {'diet': 'lactose free'}))
 
 
 @app.route('/search_mexican')
 def search_mexican():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'cuisine':'mexican'}))
+                        {'cuisine': 'mexican'}))
 
 
 @app.route('/search_pork')
 def search_pork():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                            {'protein':'pork'}))
+                            {'protein': 'pork'}))
 
 
-#! add recipes.html
+# add recipes.html
 
 @app.route('/add_recipe', methods=["POST", "GET"])
 def add_recipe():
-        recipes = mongo.db.recipes
-        recipes.insert_one(request.form.to_dict())
-        return render_template('add.html')
+    recipes = mongo.db.recipes
+    recipes.insert_one(request.form.to_dict())
+    return render_template('add.html')
 
 
 if __name__ == '__main__':
