@@ -1,61 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <form  method="POST">
-        <label for="cuisine" id="cusisne">Choose type of cuisine:</label>
-        <select name="cuisine" id="cuisine">
-            <option value="select" disabled selected>--Select--</option>
-            <option value="mediterranean" id="mediterranean">Mediterranean</option>
-            <option value="english" id="english">English</option>
-            <option value="indian" id="indian">Indian</option>
-            <option value="chinese" id="chinese">Chinese</option>
-            <option value="mexican" id="mexican">Mexican</option>
-            <option value="american" id="american">American</option>
-            <option value="italian" id="italian">Italian</option>
-        </select>
-        <label for="protein">Choose type of protein:</label>
-        <select name="protein" id="protein">
-            <option value="select" disabled selected>--Select--</option>
-            <option value="fish" id="fish">Fish</option>
-            <option value="poultry" id="poultry">Poultry</option>
-            <option value="beef" id="beef">Beef</option>
-            <option value="pork" id="pork">Pork</option>
-            <option value="lamb" id="lamb">Lamb</option>
-            <option value="other" id="other">Other</option>
-            <option value="none" id="no-protein">None</option>
-        </select>
-        <label for="carbs">Choose source of carbs:</label>
-        <select name="carbs" id="carbs">
-            <option value="select" disabled selected>--Select--</option>
-            <option value="rice" id="rice">Rice</option>
-            <option value="pasta" id="pasta">Pasta</option>
-            <option value="potato" id="potato">Potato</option>
-            <option value="bread" id="bread">Bread</option>
-            <option value="grain" id="grain">Grains/Pulps</option>
-            <option value="none" id="no-carbs">None</option>
-        </select>
-        <label for="diet">Dietary requirements</label>
-        <select name="diet" id="diet">
-            <option value="select" disabled selected>--Select--</option>
-            <option value="gluten free">Gluten Free</option>
-            <option value="lactose free">Lactose Free</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="vegan">Vegan</option>
-            <option value="none">None</option>
-        </select>
+    <form  method="POST" action="/search_recipes">
+      <div class="col-md-3">
+        <h4>Cuisine</h4>
+        English<input type="checkbox" name="cuisine" id="english">
+        Mediterranean<input type="checkbox" name="cuisine" id="mediterranean">
+        Indian<input type="checkbox" name="cuisine" id="indian">
+        Chinese<input type="checkbox" name="cuisine" id="chinese">
+        Mexican<input type="checkbox" name="cuisine" id="mexican">
+        American<input type="checkbox" name="cuisine" id="american">
+        Italian<input type="checkbox" name="cuisine" id="italian">
+      </div>
+      <div class="col-md-3">
+        <h4>Protein</h4>
+        Fish<input type="checkbox" name="protein" id="fish">
+        Poultry<input type="checkbox" name="protein" id="poultry">
+        Beef<input type="checkbox" name="protein" id="beef">
+        Pork<input type="checkbox" name="protein" id="pork">
+        Lamb<input type="checkbox" name="protein" id="lamb">
+        Other<input type="checkbox" name="protein" id="other">
+        None<input type="checkbox" name="protein" id="none">
+      </div>
+      <div class="col-md-3">
+        <h4>carbs</h4>
+        Pasta<input type="checkbox" name="carbs" id="pasta">
+        Rice<input type="checkbox" name="carbs" id="rice">
+        Potato<input type="checkbox" name="carbs" id="potato">
+        Bread<input type="checkbox" name="carbs" id="bread">
+        Pulps/Grains<input type="checkbox" name="carbs" id="pulps">
+        None<input type="checkbox" name="carbs" id="carbs">
+      </div>
+      <div class="col-md-3">
+        <h4>Allergies</h4>
+        Egg<input type="checkbox" name="allergies" id="egg">
+        Nuts<input type="checkbox" name="allergies" id="nuts">
+        Shellfish<input type="checkbox" name="allergies" id="shellfish">
+        Wheat<input type="checkbox" name="allergies" id="Wheat">
+        Soy<input type="checkbox" name="allergies" id="soy">
+        Gelatine<input type="checkbox" name="allergies" id="gelatine">
+        None<input type="checkbox" name="allergies" id="allergies">
+      </div>
         <button class="btn my-btn" type="submit">Search</button>
     </form>
 </div>
 <div class="row">
-    {% for recipe in recipes %}
     <div class="col-md-3">
-        <h3> {{recipe.name}}</h3>
-        <p>{{recipe.notes}}</p>
-        <p>Contains: {{recipe.allergies}}</p>
-        <p class="recipe_card hidden">{{recipe.ingredients}}</p>
-        <p class="recipe_card hidden">{{recipe.method}}</p>
+    {% for r in recipes %}
+        <h3> {{recipes.name}}</h3>
+        <p>{{recipes.notes}}</p>
+        <p>Contains: {{recipes.allergies}}</p>
+        <p class="recipe_card hidden">{{recipes.ingredients}}</p>
+        <p class="recipe_card hidden">{{recipes.method}}</p>
         <button class="btn my-btn view">View</button>
-    </div>
     {% endfor %}
+    </div>
 </div>
 {% endblock %}

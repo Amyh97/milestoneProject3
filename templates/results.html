@@ -2,20 +2,13 @@
 {% block content %}
     <button class="btn my-btn"><a href="{{url_for(('browse_recipes'))}}">Back</a></button>
     <div class="row">
-    {% for recipe in recipes %}
         <div class="col-md-3">
-            <h3> {{recipe.name}}</h3>
-            <p>{{recipe.notes}}</p>
+        {% for r in recipes %}
+            <h3> {{recipes.name}}</h3>
+            <p>{{recipes.notes}}</p>
             <p>Contains: {{recipes.allergies}}</p>
             <button class="btn my-btn view">View</button>
-            <p class="extra">{{recipes.ingredients}}</p>
-            <p class="extra">{{recipes.method}}</p>
+        {% endfor %}
         </div>
-        <div class="col-md-6 hidden recipe_card">
-            <h3>{{recipe.name}}</h3>
-            <p>{{recipe.ingredients}}</p>
-            <p>{{recipe.method}}</p>
-        </div>
-    {% endfor %}
     </div>
 {% endblock %}

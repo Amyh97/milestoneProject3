@@ -20,15 +20,15 @@ recipes = mongo.db.recipes
 @app.route('/')
 @app.route('/browse_recipes')
 def browse_recipes():
-    return render_template("browse.html", recipes=mongo.db.recipes.find())
+    return render_template("browse.html")
 
 
 @app.route('/search_recipes', methods=["POST", "GET"])
 def search_recipes():
-    cuisine = request.form.get('cuisine')
-    protein = request.form.get('protein')
-    carbs = request.form.get('carbs')
-    diet = request.form.get('diet')
+    cuisine = request.form.getlist('cuisine')
+    protein = request.form.getlist('protein')
+    carbs = request.form.getlist('carbs')
+    diet = request.form.getlist('diet')
     return render_template('search.html', recipes=mongo.db.recipes.find({
                             'cuisine': cuisine, 'protein': protein,
                             'carbs': carbs, 'diet': diet
@@ -96,7 +96,7 @@ def search_pork():
                             {'protein': 'pork'}))
 
 
-# add recipes.html
+# add recipes
 
 @app.route('/add_recipe', methods=["POST", "GET"])
 def add_recipe():
