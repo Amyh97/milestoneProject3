@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <form  method="POST" action="/search_recipes">
+    <form  method="GET" action="/search_recipes">
       <div class="col-md-3">
         <h4>Cuisine</h4>
         English<input type="checkbox" name="cuisine[]" id="english">
@@ -45,11 +45,11 @@
 <div class="row">
     <div class="col-md-3">
     {% for r in recipes %}
-        <h3> {{recipes.name}}</h3>
-        <p>{{recipes.notes}}</p>
-        <p>Contains: {{recipes.allergies}}</p>
-        <p class="recipe_card hidden">{{recipes.ingredients}}</p>
-        <p class="recipe_card hidden">{{recipes.method}}</p>
+        <h3> {{r.name}}</h3>
+        <p>{{r.notes}}</p>
+        <p>Contains: {{r.allergies}}</p>
+        <p class="recipe_card hidden">{{r.ingredients}}</p>
+        <p class="recipe_card hidden">{{r.method}}</p>
         <button class="btn my-btn view">View</button>
     {% endfor %}
     </div>

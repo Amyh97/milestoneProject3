@@ -24,7 +24,7 @@ def browse_recipes():
 
 
 # form not submitting properly
-@app.route('/search_recipes', methods=["POST"])
+@app.route('/search_recipes', methods=["GET"])
 def search_recipes():
     cuisine = request.form.getlist('cuisine')
     protein = request.form.getlist('protein')
