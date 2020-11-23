@@ -4,44 +4,42 @@
     <form  method="POST" action="/search_recipes">
       <div class="col-md-3">
         <h4>Cuisine</h4>
-        English<input type="checkbox" name="cuisine" id="english">
-        Mediterranean<input type="checkbox" name="cuisine" id="mediterranean">
-        Indian<input type="checkbox" name="cuisine" id="indian">
-        Chinese<input type="checkbox" name="cuisine" id="chinese">
-        Mexican<input type="checkbox" name="cuisine" id="mexican">
-        American<input type="checkbox" name="cuisine" id="american">
-        Italian<input type="checkbox" name="cuisine" id="italian">
+        English<input type="checkbox" name="cuisine[]" id="english">
+        Mediterranean<input type="checkbox" name="cuisine[]" id="mediterranean">
+        Indian<input type="checkbox" name="cuisine[]" id="indian">
+        Chinese<input type="checkbox" name="cuisine[]" id="chinese">
+        Mexican<input type="checkbox" name="cuisine[]" id="mexican">
+        American<input type="checkbox" name="cuisine[]" id="american">
+        Italian<input type="checkbox" name="cuisine[]" id="italian">
       </div>
       <div class="col-md-3">
         <h4>Protein</h4>
-        Fish<input type="checkbox" name="protein" id="fish">
-        Poultry<input type="checkbox" name="protein" id="poultry">
-        Beef<input type="checkbox" name="protein" id="beef">
-        Pork<input type="checkbox" name="protein" id="pork">
-        Lamb<input type="checkbox" name="protein" id="lamb">
-        Other<input type="checkbox" name="protein" id="other">
-        None<input type="checkbox" name="protein" id="none">
+        Fish<input type="checkbox" name="protein[]" id="fish">
+        Poultry<input type="checkbox" name="protein[]" id="poultry">
+        Beef<input type="checkbox" name="protein[]" id="beef">
+        Pork<input type="checkbox" name="protein[]" id="pork">
+        Lamb<input type="checkbox" name="protein[]" id="lamb">
+        Other<input type="checkbox" name="protein[]" id="other">
+        None<input type="checkbox" name="protein[]" id="none">
       </div>
       <div class="col-md-3">
         <h4>carbs</h4>
-        Pasta<input type="checkbox" name="carbs" id="pasta">
-        Rice<input type="checkbox" name="carbs" id="rice">
-        Potato<input type="checkbox" name="carbs" id="potato">
-        Bread<input type="checkbox" name="carbs" id="bread">
-        Pulps/Grains<input type="checkbox" name="carbs" id="pulps">
-        None<input type="checkbox" name="carbs" id="carbs">
+        Pasta<input type="checkbox" name="carbs[]" id="pasta">
+        Rice<input type="checkbox" name="carbs[]" id="rice">
+        Potato<input type="checkbox" name="carbs[]" id="potato">
+        Bread<input type="checkbox" name="carbs[]" id="bread">
+        Pulps/Grains<input type="checkbox" name="carbs[]" id="pulps">
+        None<input type="checkbox" name="carbs[]" id="carbs">
       </div>
       <div class="col-md-3">
-        <h4>Allergies</h4>
-        Egg<input type="checkbox" name="allergies" id="egg">
-        Nuts<input type="checkbox" name="allergies" id="nuts">
-        Shellfish<input type="checkbox" name="allergies" id="shellfish">
-        Wheat<input type="checkbox" name="allergies" id="Wheat">
-        Soy<input type="checkbox" name="allergies" id="soy">
-        Gelatine<input type="checkbox" name="allergies" id="gelatine">
-        None<input type="checkbox" name="allergies" id="allergies">
+        <h4>Diet</h4>
+        Lactose Free<input type="checkbox" name="diet[]" id="lactose free">
+        Gluten Free<input type="checkbox" name="diet[]" id="gluten free">
+        Vegetarian<input type="checkbox" name="diet[]" id="vegetarian">
+        vegan<input type="checkbox" name="diet[]" id="vegan">
+        None<input type="checkbox" name="diet[]" id="diet">
       </div>
-        <button class="btn my-btn" type="submit">Search</button>
+        <button class="btn my-btn">Search</button>
     </form>
 </div>
 <div class="row">

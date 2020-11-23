@@ -23,74 +23,76 @@ def browse_recipes():
     return render_template("browse.html")
 
 
-@app.route('/search_recipes', methods=["POST", "GET"])
+# form not submitting properly
+@app.route('/search_recipes', methods=["POST"])
 def search_recipes():
     cuisine = request.form.getlist('cuisine')
     protein = request.form.getlist('protein')
     carbs = request.form.getlist('carbs')
     diet = request.form.getlist('diet')
     return render_template('search.html', recipes=mongo.db.recipes.find({
-                            'cuisine': cuisine, 'protein': protein,
-                            'carbs': carbs, 'diet': diet
+                            'cuisine': [cuisine], 'protein': [protein],
+                            'carbs': [carbs], 'diet': [diet]
                             }))
 
 
 # methods for browse page to sort by 1 thing
-@app.route('/search_italian')
+#in browse.html and opens results.html 
+@app.route('/search_italian', methods=["GET"])
 def search_italian():
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                            {'cuisine': 'italian'}))
+    italian = mongo.db.recipes.find({"cuisine": "italian"})
+    return render_template('results.html', recipes=italian)
 
 
-@app.route('/search_rice')
+@app.route('/search_rice', methods=["GET"])
 def search_rice():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                             {'carbs': 'rice'}))
 
 
-@app.route('/search_vegetarian')
+@app.route('/search_vegetarian', methods=["GET"])
 def search_vegetarian():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'diet': 'vegetarian'}))
 
 
-@app.route('/search_pasta')
+@app.route('/search_pasta', methods=["GET"])
 def search_pasta():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'carbs': 'pasta'}))
 
 
-@app.route('/search_med')
+@app.route('/search_med', methods=["GET"])
 def search_med():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'cuisine': 'mediterranean'}))
 
 
-@app.route('/search_beef')
+@app.route('/search_beef', methods=["GET"])
 def search_beef():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'protein': 'beef'}))
 
 
-@app.route('/search_poultry')
+@app.route('/search_poultry', methods=["GET"])
 def search_poultry():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'protein': 'poultry'}))
 
 
-@app.route('/search_lactose')
+@app.route('/search_lactose', methods=["GET"])
 def search_lactose():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'diet': 'lactose free'}))
 
 
-@app.route('/search_mexican')
+@app.route('/search_mexican', methods=["GET"])
 def search_mexican():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                         {'cuisine': 'mexican'}))
 
 
-@app.route('/search_pork')
+@app.route('/search_pork', methods=["GET"])
 def search_pork():
     return render_template('results.html', recipes=mongo.db.recipes.find(
                             {'protein': 'pork'}))
