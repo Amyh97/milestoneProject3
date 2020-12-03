@@ -1,57 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row">
-    <form  method="GET" action="/search_recipes">
+<div class="form">
+    <form  method="POST" action="/search_recipes" class="row">
       <div class="col-md-3">
         <h4>Cuisine</h4>
-        English<input type="checkbox" name="cuisine[]" id="english">
-        Mediterranean<input type="checkbox" name="cuisine[]" id="mediterranean">
-        Indian<input type="checkbox" name="cuisine[]" id="indian">
-        Chinese<input type="checkbox" name="cuisine[]" id="chinese">
-        Mexican<input type="checkbox" name="cuisine[]" id="mexican">
-        American<input type="checkbox" name="cuisine[]" id="american">
-        Italian<input type="checkbox" name="cuisine[]" id="italian">
+        English<input type="checkbox" name="cuisine" value="english" id="english"><br>
+        Mediterranean<input type="checkbox" name="cuisine" value="mediterranean" id="mediterranean"><br>
+        Indian<input type="checkbox" name="cuisine" value="indian" id="indian"><br>
+        Chinese<input type="checkbox" name="cuisine" value="chinese" id="chinese"><br>
+        Mexican<input type="checkbox" name="cuisine" value="mexican" id="mexican"><br>
+        American<input type="checkbox" name="cuisine" value="american" id="american"><br>
+        Italian<input type="checkbox" name="cuisine" value="italian" id="italian"><br>
+        Other<input type="checkbox" name="cuisine" value="other" id="other_cuisine"><br>
       </div>
       <div class="col-md-3">
         <h4>Protein</h4>
-        Fish<input type="checkbox" name="protein[]" id="fish">
-        Poultry<input type="checkbox" name="protein[]" id="poultry">
-        Beef<input type="checkbox" name="protein[]" id="beef">
-        Pork<input type="checkbox" name="protein[]" id="pork">
-        Lamb<input type="checkbox" name="protein[]" id="lamb">
-        Other<input type="checkbox" name="protein[]" id="other">
-        None<input type="checkbox" name="protein[]" id="none">
+        Fish<input type="checkbox" name="protein" value="fish" id="fish"><br>
+        Poultry<input type="checkbox" name="protein" value="poultry" id="poultry"><br>
+        Beef<input type="checkbox" name="protein" value="beef" id="beef"><br>
+        Pork<input type="checkbox" name="protein" value="pork" id="pork"><br>
+        Lamb<input type="checkbox" name="protein" value="lamb" id="lamb"><br>
+        Other<input type="checkbox" name="protein" value="other" id="other"><br>
+        None<input type="checkbox" name="protein" value="" id="none"><br>
       </div>
       <div class="col-md-3">
         <h4>carbs</h4>
-        Pasta<input type="checkbox" name="carbs[]" id="pasta">
-        Rice<input type="checkbox" name="carbs[]" id="rice">
-        Potato<input type="checkbox" name="carbs[]" id="potato">
-        Bread<input type="checkbox" name="carbs[]" id="bread">
-        Pulps/Grains<input type="checkbox" name="carbs[]" id="pulps">
-        None<input type="checkbox" name="carbs[]" id="carbs">
+        Pasta<input type="checkbox" name="carbs" value="pasta" id="pasta"><br>
+        Rice<input type="checkbox" name="carbs" value="rice" id="rice"><br>
+        Potato<input type="checkbox" name="carbs" value="potato" id="potato"><br>
+        Bread<input type="checkbox" name="carbs" value="bread" id="bread"><br>
+        Pulps/Grains<input type="checkbox" name="carbs" value="pulps" id="pulps"><br>
+        None<input type="checkbox" name="carbs" value="" id="carbs"><br>
       </div>
       <div class="col-md-3">
         <h4>Diet</h4>
-        Lactose Free<input type="checkbox" name="diet[]" id="lactose free">
-        Gluten Free<input type="checkbox" name="diet[]" id="gluten free">
-        Vegetarian<input type="checkbox" name="diet[]" id="vegetarian">
-        vegan<input type="checkbox" name="diet[]" id="vegan">
-        None<input type="checkbox" name="diet[]" id="diet">
+        Vegetarian<input type="checkbox" name="diet" value="vegetarian" id="vegetarian"><br>
+        Vegan<input type="checkbox" name="diet" value="vegan" id="vegan"><br>
+        None<input type="checkbox" name="diet" value="" id="diet"><br>
       </div>
         <button class="btn my-btn">Search</button>
     </form>
 </div>
 <div class="row">
-    <div class="col-md-3">
-    {% for r in recipes %}
-        <h3> {{r.name}}</h3>
-        <p>{{r.notes}}</p>
-        <p>Contains: {{r.allergies}}</p>
-        <p class="recipe_card hidden">{{r.ingredients}}</p>
-        <p class="recipe_card hidden">{{r.method}}</p>
-        <button class="btn my-btn view">View</button>
-    {% endfor %}
-    </div>
+     {% for x in recipes %}
+        <div class="col-md-3 overview">
+            <h3> {{x.name}}</h3>
+            <p>{{x.notes}}</p>
+            <p>Allergens: {{x.allergies}}</p>
+            <button class="btn my-btn view">View</button>
+        </div>
+        <div class="col-md-3 recipe_card hidden" id="{{x._id}}">
+            <h4 class="recipe_card">Ingredients</h4>
+            <p class="recipe_card">{{x.ingredients}}</p>
+            <h4 class="recipe_card">Method</h4>
+            <p class="recipe_card">{{x.method}}</p>
+            <button class="btn my-btn close">Close</button>
+        </div> 
+        {% endfor %}
 </div>
 {% endblock %}

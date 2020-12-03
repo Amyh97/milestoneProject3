@@ -23,17 +23,19 @@ def browse_recipes():
     return render_template("browse.html")
 
 
-# form not submitting properly
-@app.route('/search_recipes', methods=["GET"])
+# form not iterating, can't cope with array in mongo, both ok, one not ok
+@app.route('/search_recipes', methods=["POST", "GET"])
 def search_recipes():
     cuisine = request.form.getlist('cuisine')
     protein = request.form.getlist('protein')
     carbs = request.form.getlist('carbs')
     diet = request.form.getlist('diet')
-    return render_template('search.html', recipes=mongo.db.recipes.find({
-                            'cuisine': [cuisine], 'protein': [protein],
-                            'carbs': [carbs], 'diet': [diet]
-                            }))
+    search = mongo.db.recipes.find({
+                            'cuisine': {"$in":cuisine}, 'protein': {"$in":protein},
+                            'carbs': {"$in":carbs}, 'diet': {"$in":diet}
+                            })
+    print(cuisine, protein, carbs, diet)
+    return render_template('search.html', recipes=search)
 
 
 # methods for browse page to sort by 1 thing
