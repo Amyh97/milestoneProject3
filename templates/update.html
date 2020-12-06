@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <form action="{{url_for('add_recipe')}}" method="POST" class="row">
-        <input type="text" id="name" name="name" required placeholder="Recipe name...">
+    <form action="{{url_for('update_recipe', recipe_id = recipes._id)}}" method="POST" class="col s12">
+        <input type="text" id="name" name="name" required value="{{recipes.name}}">
         <div class="col-md-3">
         <h4>Cuisine</h4>
-        English<input type="checkbox" name="cuisine" value="english" id="english"><br>
-        Mediterranean<input type="checkbox" name="cuisine" value="mediterranean" id="mediterranean"><br>
+        {% if recipes.cuisine == 'english' %}
+            English<input type="checkbox" name="cuisine" value="english" checked><br>
+        {% else %}
+            English<input type="checkbox" name="cuisine" value="english"><br>
+        {% endif %}
+        {% if recipes.cuisine == 'mediterranean' %}
+            Mediterranean<input type="checkbox" name="cuisine" value="mediterranean" checked><br>
+        {% else %}
+            Mediterranean<input type="checkbox" name="cuisine" value="mediterranean"><br>
+        {% endif %}
         Indian<input type="checkbox" name="cuisine" value="indian" id="indian"><br>
         Chinese<input type="checkbox" name="cuisine" value="chinese" id="chinese"><br>
         Mexican<input type="checkbox" name="cuisine" value="mexican" id="mexican"><br>
@@ -52,12 +60,13 @@
         None<input type="checkbox" name="allergies" value="" id="no_allergens"><br>
         </div>
         <label for="ingredients">Ingredient list:</label>
-        <textarea name="ingredients" id="ingredients" cols="30" rows="10" required></textarea>
+        <textarea name="ingredients" id="ingredients" cols="30" rows="10" required>{{recipes.ingredients}}</textarea>
         <label for="method">Method:</label>
-        <textarea name="method" id="method" cols="30" rows="10" required></textarea>
+        <textarea name="method" id="method" cols="30" rows="10" required>{{recipes.method}}</textarea>
         <label for="notes">Notes:</label>
-        <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
-        <button type="submit" id="add">Submit</button>
+        <textarea name="notes" id="notes" cols="30" rows="10">{{recipes.notes}}</textarea>
+        <button type="submit">Update</button>
+        <button>Delete</button>
     </form>
 </div>
 {% endblock %}

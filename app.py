@@ -31,15 +31,18 @@ def search_recipes():
     carbs = request.form.getlist('carbs')
     diet = request.form.getlist('diet')
     search = mongo.db.recipes.find({
-                            'cuisine': {"$in":cuisine}, 'protein': {"$in":protein},
-                            'carbs': {"$in":carbs}, 'diet': {"$in":diet}
+                            'cuisine': {"$in": cuisine},
+                            'protein': {"$in": protein},
+                            'carbs': {"$in": carbs}, 'diet': {"$in": diet}
                             })
     print(cuisine, protein, carbs, diet)
     return render_template('search.html', recipes=search)
 
 
-# methods for browse page to sort by 1 thing
-#in browse.html and opens results.html 
+""" methods for browse page to sort by 1 thing
+in browse.html and opens results.html """
+
+
 @app.route('/search_italian', methods=["GET"])
 def search_italian():
     italian = mongo.db.recipes.find({"cuisine": "italian"})
@@ -105,8 +108,45 @@ def search_pork():
 @app.route('/add_recipe', methods=["POST", "GET"])
 def add_recipe():
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    new_recipe = {
+        'name': request.form.get('name'),
+        'cuisine': request.form.getlist('cuisine'),
+        'protein': request.form.getlist('protein'),
+        'carbs': request.form.getlist('carbs'),
+        'diet': request.form.getlist('diet'),
+        'allergies': request.form.getlist('allergies'),
+        'ingredients': request.form.getlist('ingredients'),
+        'method': request.form.get('method'),
+        'notes': request.form.get('notes')
+        }
+    recipes.insert_one(new_recipe)
     return render_template('add.html')
+
+# update recipes
+
+
+@app.route('/edit_recipe/<recipe_id>', methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    return render_template("update.html", recipes=recipe)
+
+
+@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+def update_recipe(recipe_id):
+    recipe = mongo.db.recipes
+    recipe.update({'_id': ObjectId(recipe_id)}, {
+        'name': request.form.get('name'),
+        'cuisine': request.form.getlist('cuisine'),
+        'protein': request.form.getlist('protein'),
+        'carbs': request.form.getlist('carbs'),
+        'diet': request.form.getlist('diet'),
+        'allergies': request.form.getlist('allergies'),
+        'ingredients': request.form.get('ingredients'),
+        'method': request.form.get('method'),
+        'notes': request.form.get('notes')
+        })
+
+    return render_template("browse.html")
 
 
 if __name__ == '__main__':

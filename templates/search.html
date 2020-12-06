@@ -55,6 +55,7 @@
             <h4 class="recipe_card">Method</h4>
             <p class="recipe_card">{{x.method}}</p>
             <button class="btn my-btn close">Close</button>
+            <button><a href="{{url_for('edit_recipe', recipe_id=x._id)}}">Update</a></button>
         </div> 
         {% endfor %}
 </div>
