@@ -23,20 +23,24 @@ def browse_recipes():
     return render_template('browse.html')
 
 
-# form not iterating, can't cope with array in mongo, both ok, one not ok
-@app.route('/search_recipes', methods=['POST', 'GET'])
-def search_recipes():
+# search recipes
+@app.route('/recipes', methods=["POST", "GET"])
+def recipes():
+    query_object = {}
     cuisine = request.form.getlist('cuisine')
     protein = request.form.getlist('protein')
     carbs = request.form.getlist('carbs')
     diet = request.form.getlist('diet')
-    search = mongo.db.recipes.find({
-                            'cuisine': {'$in': cuisine},
-                            'protein': {'$in': protein},
-                            'carbs': {'$in': carbs}, 'diet': {'$in': diet}
-                            })
-    print(cuisine, protein, carbs, diet)
-    return render_template('search.html', recipes=search)
+    if cuisine:
+        query_object['cuisine'] = {'$in': cuisine}
+    if protein:
+        query_object['protein'] = {'$in': protein}
+    if carbs:
+        query_object['carbs'] = {'$in': carbs}
+    if diet:
+        query_object['diet'] = {'$in': diet}
+    recipes = mongo.db.recipes.find(query_object)
+    return render_template('search.html', recipes=recipes)
 
 
 """ methods for browse page to sort by 1 thing
@@ -103,56 +107,53 @@ def search_pork():
                             {'protein': 'pork'}))
 
 
-# add recipes
-
-@app.route('/add_recipe', methods=['POST', 'GET'])
+# add recipe
+@app.route('/recipe/add', methods=['POST', 'GET'])
 def add_recipe():
-    recipes = mongo.db.recipes
-    new_recipe = {
-        'name': request.form.get('name'),
-        'cuisine': request.form.getlist('cuisine'),
-        'protein': request.form.getlist('protein'),
-        'carbs': request.form.getlist('carbs'),
-        'diet': request.form.getlist('diet'),
-        'allergies': request.form.getlist('allergies'),
-        'ingredients': request.form.getlist('ingredients'),
-        'method': request.form.get('method'),
-        'notes': request.form.get('notes')
-        }
-    recipes.insert_one(new_recipe)
+    if request.method == 'POST':
+        new_recipe = {
+            'name': request.form.get('name'),
+            'cuisine': request.form.getlist('cuisine'),
+            'protein': request.form.getlist('protein'),
+            'carbs': request.form.getlist('carbs'),
+            'diet': request.form.getlist('diet'),
+            'allergies': request.form.getlist('allergies'),
+            'ingredients': request.form.getlist('ingredients'),
+            'method': request.form.get('method'),
+            'notes': request.form.get('notes')
+            }
+        mongo.db.recipes.insert_one(new_recipe)
     return render_template('add.html')
 
-# update recipes
+
+""" update recipes page
+not pre-checking checkboxes so being updated with empty values
+"""
 
 
-@app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
-def edit_recipe(recipe_id):
-    recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    return render_template('update.html', recipes=recipe)
-
-
-@app.route('/update_recipe/<recipe_id>', methods=['POST'])
+# recipe edit
+@app.route('/recipe/<recipe_id>/edit', methods=['GET', 'POST'])
 def update_recipe(recipe_id):
-    recipe = mongo.db.recipes
-    recipe.update({'_id': ObjectId(recipe_id)}, {
-        'name': request.form.get('name'),
-        'cuisine': request.form.getlist('cuisine'),
-        'protein': request.form.getlist('protein'),
-        'carbs': request.form.getlist('carbs'),
-        'diet': request.form.getlist('diet'),
-        'allergies': request.form.getlist('allergies'),
-        'ingredients': request.form.get('ingredients'),
-        'method': request.form.get('method'),
-        'notes': request.form.get('notes')
-        })
+    if request.method == 'POST':
+        mongo.db.recipes.update({'_id': ObjectId(recipe_id)}, {
+            'name': request.form.get('name'),
+            'cuisine': request.form.getlist('cuisine'),
+            'protein': request.form.getlist('protein'),
+            'carbs': request.form.getlist('carbs'),
+            'diet': request.form.getlist('diet'),
+            'allergies': request.form.getlist('allergies'),
+            'ingredients': request.form.get('ingredients'),
+            'method': request.form.get('method'),
+            'notes': request.form.get('notes')
+          })
+    return render_template('update.html')
 
-    return render_template('browse.html')
+# delete recipe
 
 
-@app.route('/delete_recipe/<recipe_id>')
+@app.route('/recipe/<recipe_id>/delete')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-    return render_template('browse.html')
 
 
 if __name__ == '__main__':
