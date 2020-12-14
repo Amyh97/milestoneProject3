@@ -1,23 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
     <button class="btn my-btn"><a href="{{url_for(('browse_recipes'))}}">Back</a></button>
-    <div class="row">
-        {% for x in recipes %}
-        <div class="col-md-3 overview">
+    <div class="row no-gutters">
+     {% for x in recipes %}
+        <div class="col-md-3 overview card">
+            <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
             <h3> {{x.name}}</h3>
             <p>{{x.notes}}</p>
             <p>Allergens: {{x.allergies}}</p>
             <button class="btn my-btn view">View</button>
         </div>
-        <div class="col-md-3 recipe_card hidden" id="{{x._id}}">
-            <h4 class="recipe_card">Ingredients</h4>
-            <p class="recipe_card">{{x.ingredients}}</p>
-            <h4 class="recipe_card">Method</h4>
-            <p class="recipe_card">{{x.method}}</p>
-            <button class="btn my-btn close">Close</button>
-            <button><a href="{{url_for('update_recipe', recipe_id=x._id)}}">Update</a></button>
+        <div class="col-11 recipe_card hidden card" id="{{x._id}}">
+            <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top lrg-card">
+            <h3> {{x.name}}</h3>
+            <p>{{x.notes}}</p>
+            <h4>Ingredients</h4>
+            <p>{{x.ingredients}}</p>
+            <h4>Method</h4>
+            <p>{{x.method}}</p>
+            <button class="btn my-btn closed">Close</button>
+            <button class="btn my-btn"><a href="{{url_for('update_recipe', recipe_id=x._id)}}">Update</a></button>
         </div> 
         {% endfor %}
-    </div>
+</div>
     
 {% endblock %}

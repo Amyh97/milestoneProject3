@@ -7,9 +7,8 @@ body {
     font-size: 16px;
     font-weight: 300;
     overflow: auto;
-    background-color: #f8bbd0;
 }
-/*--- header across website ---*/
+/*--- base.html ---*/
 
 header {
     background-color: #c48b9f;
@@ -41,8 +40,39 @@ header h3 {
     height: auto;
 }
 
+footer, footer a {
+    color: #f8bbd0;
+}
+/*--- cards ---*/
+.card {
+    border: 1px, black;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.card-img-top {
+    padding: 10px;
+    max-height: auto;
+    width: 75%;
+    margin-left: 10%;
+}
+
+.my-btn, .my-btn a {
+    border: 1px, black;
+    font-family: "PT sans", sans-serif;
+    border-radius: 5px;
+    background-color: #f8bbd0;
+    color: black;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
 /*--- show and hide cards with recipes on ---*/
 
 .hidden {
     display: none
+}
+
+.lrg-card {
+    max-width: 200px;
 }
