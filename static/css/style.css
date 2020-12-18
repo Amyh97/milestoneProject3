@@ -7,6 +7,7 @@ body {
     font-size: 16px;
     font-weight: 300;
     overflow: auto;
+    overflow-x: hidden;
 }
 /*--- base.html ---*/
 
@@ -16,7 +17,7 @@ header {
 
 header h1 {
     font-family: "Sansita Swashed", sans-serif;
-    font-size: 36px;
+    font-size: 50px;
     font-weight: 500;
     text-align: center;
 }
@@ -27,21 +28,44 @@ header h3 {
     text-align: center;
 }
 
-.logo {
-    display: inline-block;
-    height: auto;
-    max-width: 50px;
-    margin-left: 0;
-
-}
-
 .logo a {
     width: 100%;
     height: auto;
 }
 
+.menu {
+    padding: 20px;
+}
+
 footer, footer a {
     color: #f8bbd0;
+}
+
+/*---base.html medic queries ---*/
+@media (max-width: 770px) {
+    .logo {
+        display: none;
+    }
+
+    .header h1 {
+        font-family: "Sansita Swashed", sans-serif;
+        font-size: 36px;
+        font-weight: 500;
+        text-align: center;
+}
+
+    .header h3 {
+        font-family: "PT Sans", sans-serif;
+        font-size :24px;
+        text-align: center;
+}
+
+}
+
+@media (max-width:380px) {
+    .menu {
+        margin-left: 20%;
+    }
 }
 /*--- cards ---*/
 .card {
