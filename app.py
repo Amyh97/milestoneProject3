@@ -18,12 +18,16 @@ recipes = mongo.db.recipes
 
 
 @app.route('/')
-@app.route('/browse_recipes')
 def browse_recipes():
-    return render_template('browse.html')
+    carousel = mongo.db.recipes.find()
+    recipe = []
+    for x in carousel:
+        recipe += x
+    print(recipe)
+    return render_template('browse.html', recipe=recipe)
 
 
-# search recipes
+# search recipe
 @app.route('/recipes', methods=["POST", "GET"])
 def recipes():
     query_object = {}
@@ -123,7 +127,11 @@ def add_recipe():
             'notes': request.form.get('notes')
             }
         mongo.db.recipes.insert_one(new_recipe)
-    return render_template('add.html')
+    return render_template('add.html', cuisine=mongo.db.cuisine.find(),
+                                    protein=mongo.db.protein.find(),
+                                    carbs=mongo.db.carbs.find(),
+                                    diet=mongo.db.diet.find(),
+                                    allergies=mongo.db.allergies.find())
 
 
 """ update recipes page

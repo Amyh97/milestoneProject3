@@ -5,51 +5,33 @@
         <input type="text" id="name" name="name" required placeholder="Recipe name...">
         <div class="col-md-3">
         <h4>Cuisine</h4>
-        English<input type="checkbox" name="cuisine" value="english" id="english"><br>
-        Mediterranean<input type="checkbox" name="cuisine" value="mediterranean" id="mediterranean"><br>
-        Indian<input type="checkbox" name="cuisine" value="indian" id="indian"><br>
-        Chinese<input type="checkbox" name="cuisine" value="chinese" id="chinese"><br>
-        Mexican<input type="checkbox" name="cuisine" value="mexican" id="mexican"><br>
-        American<input type="checkbox" name="cuisine" value="american" id="american"><br>
-        Italian<input type="checkbox" name="cuisine" value="italian" id="italian"><br>
-        Other<input type="checkbox" name="cuisine" value="other" id="other_cuisine"><br>
+        {% for x in cuisine %}
+                    {{x.cuisine}}<input type="checkbox" value="{x.cuisine}}" name="cuisine"><br>
+        {% endfor%}
       </div>
         <div class="col-md-3">
         <h4>Protein</h4>
-        Fish<input type="checkbox" name="protein" value="fish" id="fish"><br>
-        Poultry<input type="checkbox" name="protein" value="poultry" id="poultry"><br>
-        Beef<input type="checkbox" name="protein" value="beef" id="beef"><br>
-        Pork<input type="checkbox" name="protein" value="pork" id="pork"><br>
-        Lamb<input type="checkbox" name="protein" value="lamb" id="lamb"><br>
-        Other<input type="checkbox" name="protein" value="other" id="other"><br>
-        None<input type="checkbox" name="protein" value="" id="none"><br>
+        {% for x in protein %}
+                    {{x.protein}}<input type="checkbox" value="{x.protein}}" name="protein"><br>
+        {% endfor%}
       </div>
         <div class="col-md-3">
         <h4>carbs</h4>
-        Pasta<input type="checkbox" name="carbs" value="pasta" id="pasta"><br>
-        Rice<input type="checkbox" name="carbs" value="rice" id="rice"><br>
-        Potato<input type="checkbox" name="carbs" value="potato" id="potato"><br>
-        Bread<input type="checkbox" name="carbs" value="bread" id="bread"><br>
-        Pulps/Grains<input type="checkbox" name="carbs" value="pulps" id="pulps"><br>
-        None<input type="checkbox" name="carbs" value="" id="carbs"><br>
+        {% for x in carbs %}
+                    {{x.carbs}}<input type="checkbox" value="{x.carbs}}" name="carbs"><br>
+        {% endfor%}
       </div>
         <div class="col-md-3">
         <h4>Diet</h4>
-        Vegetarian<input type="checkbox" name="diet" value="vegetarian" id="vegetarian"><br>
-        Vegan<input type="checkbox" name="diet" value="vegan" id="vegan"><br>
-        None<input type="checkbox" name="diet" value="" id="diet"><br>
+        {% for x in diet %}
+                    <p>{{x.diet}}</p><input type="checkbox" value="{x.diet}}" name="diet"><br>
+        {% endfor%}
       </div>
         <div class="col-md-3">
         <h4>Any allergens?</h4>
-        Gluten<input type="checkbox" name="allergies" value="gluten" id="gluten"><br>
-        Lactose<input type="checkbox" name="allergies" value="lactose" id="lactose"><br>
-        Egg<input type="checkbox" name="allergies" value="egg" id="egg"><br>
-        Nuts<input type="checkbox" name="allergies" value="nuts" id="id"><br>
-        Shellfish<input type="checkbox" name="allergies" value="shellfish"><br>
-        Wheat<input type="checkbox" name="allergies" value="wheat" id="wheat"><br>
-        Soy<input type="checkbox" name="allergies" value="soy" id="soy"><br>
-        Gelatine<input type="checkbox" name="allergies" value="gelatine" id="gelatine"><br>
-        None<input type="checkbox" name="allergies" value="" id="no_allergens"><br>
+        {% for x in allergies %}
+                    {{x.allergies}}<input type="checkbox" value="{x.allergies}}" name="allergies"><br>
+        {% endfor%}
         </div>
         <label for="ingredients">Ingredient list:</label>
         <textarea name="ingredients" id="ingredients" cols="30" rows="10" required></textarea>
