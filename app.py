@@ -20,10 +20,7 @@ recipes = mongo.db.recipes
 @app.route('/')
 def browse_recipes():
     carousel = mongo.db.recipes.find()
-    recipe = []
-    for x in carousel:
-        recipe += x
-    print(recipe)
+    recipe = (list(carousel)[-5:])
     return render_template('browse.html', recipe=recipe)
 
 
@@ -114,24 +111,28 @@ def search_pork():
 # add recipe
 @app.route('/recipe/add', methods=['POST', 'GET'])
 def add_recipe():
-    if request.method == 'POST':
+    if request.method == "POST":
         new_recipe = {
-            'name': request.form.get('name'),
-            'cuisine': request.form.getlist('cuisine'),
-            'protein': request.form.getlist('protein'),
-            'carbs': request.form.getlist('carbs'),
-            'diet': request.form.getlist('diet'),
-            'allergies': request.form.getlist('allergies'),
-            'ingredients': request.form.getlist('ingredients'),
-            'method': request.form.get('method'),
-            'notes': request.form.get('notes')
-            }
+            "name": request.form.get("name"),
+            "cuisine": request.form.getlist("cuisine"),
+            "protein": request.form.getlist("protein"),
+            "carbs": request.form.getlist("carbs"),
+            "diet": request.form.getlist("diet"),
+            "allergies": request.form.getlist("allergies"),
+            "ingredients": request.form.getlist("ingredients"),
+            "method": request.form.get("method"),
+            "notes": request.form.get("notes"),
+            "image": request.form.get("image")
+        }
         mongo.db.recipes.insert_one(new_recipe)
-    return render_template('add.html', cuisine=mongo.db.cuisine.find(),
-                                    protein=mongo.db.protein.find(),
-                                    carbs=mongo.db.carbs.find(),
-                                    diet=mongo.db.diet.find(),
-                                    allergies=mongo.db.allergies.find())
+    return render_template(
+        "add.html",
+        cuisine=mongo.db.cuisine.find(),
+        protein=mongo.db.protein.find(),
+        carbs=mongo.db.carbs.find(),
+        diet=mongo.db.diet.find(),
+        allergies=mongo.db.allergies.find(),
+    )
 
 
 """ update recipes page
@@ -164,6 +165,6 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
 
 
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT'
-            )), debug=True)
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")),
+            debug=True)
