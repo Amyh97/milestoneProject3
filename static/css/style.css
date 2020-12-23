@@ -100,3 +100,16 @@ footer, footer a {
 .lrg-card {
     max-width: 200px;
 }
+
+/*--- browse.html ---*/
+
+#my-carousel {
+    height: auto;
+    max-width: 200px;
+}
+
+.carousel-item {
+    height: auto;
+}
+
+/*--- forms ---*/

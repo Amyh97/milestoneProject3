@@ -21,7 +21,13 @@ recipes = mongo.db.recipes
 def browse_recipes():
     carousel = mongo.db.recipes.find()
     recipe = (list(carousel)[-5:])
-    return render_template('browse.html', recipe=recipe)
+    one = recipe[0]
+    two = recipe[1]
+    three = recipe[2]
+    four = recipe[3]
+    five = recipe[4]
+    return render_template('browse.html', one=one,
+                           two=two, three=three, four=four, five=five)
 
 
 # search recipe
@@ -72,10 +78,10 @@ def search_pasta():
                         {'carbs': 'pasta'}))
 
 
-@app.route('/search_med', methods=['GET'])
-def search_med():
+@app.route('/search_sweet', methods=['GET'])
+def search_sweet():
     return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'cuisine': 'mediterranean'}))
+                        {'cuisine': 'sweet'}))
 
 
 @app.route('/search_beef', methods=['GET'])

@@ -8,3 +8,8 @@ $('.closed').on('click', function() {
     $(this).parent('div.recipe_card').prev('div.overview').removeClass('hidden');
 });
 
+ $(document).ready(function(){
+    $('.carousel').carousel({
+      interval: 3000
+    })
+  });   
