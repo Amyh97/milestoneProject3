@@ -4,39 +4,43 @@
     <form  method="POST" action="recipes" class="row">
       <div class="col-md-3">
         <h4>Cuisine</h4>
-        English<input type="checkbox" name="cuisine" value="english" id="english"><br>
-        Mediterranean<input type="checkbox" name="cuisine" value="mediterranean" id="mediterranean"><br>
-        Indian<input type="checkbox" name="cuisine" value="indian" id="indian"><br>
-        Chinese<input type="checkbox" name="cuisine" value="chinese" id="chinese"><br>
-        Mexican<input type="checkbox" name="cuisine" value="mexican" id="mexican"><br>
-        American<input type="checkbox" name="cuisine" value="american" id="american"><br>
-        Italian<input type="checkbox" name="cuisine" value="italian" id="italian"><br>
-        Other<input type="checkbox" name="cuisine" value="other" id="other_cuisine"><br>
+            {% for x in cuisine %}
+                {% if x.cuisine == recipes.cuisine %}
+                    <p>{{x.cuisine}}</p><input type="checkbox" name="cuisine"  value="{{x.cuisine}}" checked><br>
+                {% else %}
+                    <p>{{x.cuisine}}</p><input type="checkbox" name="cuisine"  value="{{x.cuisine}}"><br>
+                {% endif %}
+            {% endfor %}
       </div>
       <div class="col-md-3">
         <h4>Protein</h4>
-        Fish<input type="checkbox" name="protein" value="fish" id="fish"><br>
-        Poultry<input type="checkbox" name="protein" value="poultry" id="poultry"><br>
-        Beef<input type="checkbox" name="protein" value="beef" id="beef"><br>
-        Pork<input type="checkbox" name="protein" value="pork" id="pork"><br>
-        Lamb<input type="checkbox" name="protein" value="lamb" id="lamb"><br>
-        Other<input type="checkbox" name="protein" value="other" id="other"><br>
-        None<input type="checkbox" name="protein" value="" id="none"><br>
+        {% for x in protein %}
+                {% if x.protein == recipes.protein %}
+                    <p>{{x.protein}}</p><input type="checkbox" name="protein"  value="{{x.protein}}" checked><br>
+                {% else %}
+                    <p>{{x.protein}}</p><input type="checkbox" name="protein"  value="{{x.protein}}"><br>
+                {% endif %}
+            {% endfor %}
       </div>
       <div class="col-md-3">
         <h4>carbs</h4>
-        Pasta<input type="checkbox" name="carbs" value="pasta" id="pasta"><br>
-        Rice<input type="checkbox" name="carbs" value="rice" id="rice"><br>
-        Potato<input type="checkbox" name="carbs" value="potato" id="potato"><br>
-        Bread<input type="checkbox" name="carbs" value="bread" id="bread"><br>
-        Pulps/Grains<input type="checkbox" name="carbs" value="pulps" id="pulps"><br>
-        None<input type="checkbox" name="carbs" value="" id="carbs"><br>
+        {% for x in carbs %}
+                {% if x.carbs == recipes.carbs %}
+                    <p>{{x.carbs}}</p><input type="checkbox" name="carbs"  value="{{x.carbs}}" checked><br>
+                {% else %}
+                    <p>{{x.carbs}}</p><input type="checkbox" name="carbs"  value="{{x.carbs}}"><br>
+                {% endif %}
+            {% endfor %}
       </div>
       <div class="col-md-3">
         <h4>Diet</h4>
-        Vegetarian<input type="checkbox" name="diet" value="vegetarian" id="vegetarian"><br>
-        Vegan<input type="checkbox" name="diet" value="vegan" id="vegan"><br>
-        None<input type="checkbox" name="diet" value="" id="diet"><br>
+        {% for x in diet %}
+                {% if x.diet == recipes.diet %}
+                    <p>{{x.diet}}</p><input type="checkbox" name="diet"  value="{{x.diet}}" checked><br>
+                {% else %}
+                    <p>{{x.diet}}</p><input type="checkbox" name="diet"  value="{{x.diet}}"><br>
+                {% endif %}
+            {% endfor %}
       </div>
         <button class="btn my-btn">Search</button>
     </form>
