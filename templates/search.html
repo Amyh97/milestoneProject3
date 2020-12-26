@@ -4,43 +4,27 @@
     <form  method="POST" action="recipes" class="row">
       <div class="col-md-3">
         <h4>Cuisine</h4>
-            {% for x in cuisine %}
-                {% if x.cuisine == recipes.cuisine %}
-                    <p>{{x.cuisine}}</p><input type="checkbox" name="cuisine"  value="{{x.cuisine}}" checked><br>
-                {% else %}
-                    <p>{{x.cuisine}}</p><input type="checkbox" name="cuisine"  value="{{x.cuisine}}"><br>
-                {% endif %}
-            {% endfor %}
+        {% for x in cuisine %}
+            <p >{{x.cuisine}}</p><input type="checkbox" value="{x.cuisine}}" name="cuisine"><br>
+        {% endfor%}
       </div>
-      <div class="col-md-3">
+        <div class="col-md-3">
         <h4>Protein</h4>
         {% for x in protein %}
-                {% if x.protein == recipes.protein %}
-                    <p>{{x.protein}}</p><input type="checkbox" name="protein"  value="{{x.protein}}" checked><br>
-                {% else %}
-                    <p>{{x.protein}}</p><input type="checkbox" name="protein"  value="{{x.protein}}"><br>
-                {% endif %}
-            {% endfor %}
+            <p>{{x.protein}}</p><input type="checkbox" value="{x.protein}}" name="protein"><br>
+        {% endfor%}
       </div>
-      <div class="col-md-3">
+        <div class="col-md-3">
         <h4>carbs</h4>
         {% for x in carbs %}
-                {% if x.carbs == recipes.carbs %}
-                    <p>{{x.carbs}}</p><input type="checkbox" name="carbs"  value="{{x.carbs}}" checked><br>
-                {% else %}
-                    <p>{{x.carbs}}</p><input type="checkbox" name="carbs"  value="{{x.carbs}}"><br>
-                {% endif %}
-            {% endfor %}
+            <p>{{x.carbs}}</p><input type="checkbox" value="{x.carbs}}" name="carbs"><br>
+        {% endfor%}
       </div>
-      <div class="col-md-3">
+        <div class="col-md-3">
         <h4>Diet</h4>
         {% for x in diet %}
-                {% if x.diet == recipes.diet %}
-                    <p>{{x.diet}}</p><input type="checkbox" name="diet"  value="{{x.diet}}" checked><br>
-                {% else %}
-                    <p>{{x.diet}}</p><input type="checkbox" name="diet"  value="{{x.diet}}"><br>
-                {% endif %}
-            {% endfor %}
+            <p>{{x.diet}}</p><input type="checkbox" value="{x.diet}}" name="diet"><br>
+        {% endfor%}
       </div>
         <button class="btn my-btn">Search</button>
     </form>
