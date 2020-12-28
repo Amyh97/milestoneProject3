@@ -78,7 +78,7 @@ footer, footer a {
     padding: 10px;
     max-height: auto;
     width: 75%;
-    margin-left: 10%;
+    justify-content: center;
 }
 
 .my-btn, .my-btn a {
@@ -141,15 +141,15 @@ textarea, #image, #name {
     margin-top: 30px;
 }
 
-.form-div {
-   border: 2px black;
-   margin-top: 2px;
-}
-
 .sub-heading {
     font-family: "Sansita Swashed", sans-serif;
-    text-align: center;
     margin: 5px;
+}
+
+.sub-heading-middle {
+    text-align: center;
+    font-family: "Sansita Swashed", sans-serif;
+    margin: 6px;
 }
 
 .option {
@@ -161,9 +161,15 @@ textarea, #image, #name {
 }
 
 
-/*--- firm media queries ---*/
+/*--- form media queries ---*/
 @media (max-width:770px) {
     .medium {
         display: inline;
+    }
+}
+
+@media (max-width:400px) {
+    .option {
+        margin-right: 2px;
     }
 }

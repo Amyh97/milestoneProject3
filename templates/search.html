@@ -1,54 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="form">
+<h3 class="sub-heading-middle">Search Recipes</h3>
     <form  method="POST" action="recipes" class="row">
-      <div class="col-md-3">
-        <h4>Cuisine</h4>
+      <div class="col-lg-12">
+        <h4 class="sub-heading">Cuisine</h4>
         {% for x in cuisine %}
-            <p >{{x.cuisine}}</p><input type="checkbox" value="{x.cuisine}}" name="cuisine"><br>
+            {{x.cuisine | capitalize}}<input type="checkbox" class="option" value="{{x.cuisine}}" name="cuisine">
         {% endfor%}
+        <hr>
       </div>
-        <div class="col-md-3">
-        <h4>Protein</h4>
+        <div class="col-lg-12">
+        <h4 class="sub-heading">Protein</h4>
         {% for x in protein %}
-            <p>{{x.protein}}</p><input type="checkbox" value="{x.protein}}" name="protein"><br>
+            {{x.protein | capitalize}}<input type="checkbox" class="option" value="{{x.protein}}" name="protein">
         {% endfor%}
+        <hr>
       </div>
-        <div class="col-md-3">
-        <h4>carbs</h4>
+        <div class="col-lg-12">
+        <h4 class="sub-heading">Carbs</h4>
         {% for x in carbs %}
-            <p>{{x.carbs}}</p><input type="checkbox" value="{x.carbs}}" name="carbs"><br>
+            {{x.carbs | capitalize}}<input type="checkbox" class="option" value="{{x.carbs}}" name="carbs">
         {% endfor%}
+        <hr>
       </div>
-        <div class="col-md-3">
-        <h4>Diet</h4>
+        <div class="col-lg-12">
+        <h4 class="sub-heading">Diet</h4>
         {% for x in diet %}
-            <p>{{x.diet}}</p><input type="checkbox" value="{x.diet}}" name="diet"><br>
+            {{x.diet | capitalize}}<input type="checkbox" class="option" value="{x.diet}}" name="diet">
         {% endfor%}
+        <hr>
       </div>
-        <button class="btn my-btn">Search</button>
+        <button class="btn alt-btn">Search</button>
     </form>
-</div>
+<!--- cards  with overview and detail of recipes -->
 <div class="row no-gutters">
-     {% for x in recipes %}
+    {% for x in recipes %}
         <div class="col-lg-3 col-md-4 overview card">
-            <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
-            <h3> {{x.name}}</h3>
-            <p>{{x.notes}}</p>
-            <p>Allergens: {{x.allergies}}</p>
-            <button class="btn my-btn view">View</button>
+                        <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
+                        <h3> {{x.name | capitalize}}</h3>
+                        <p>{{x.notes}}</p>
+                        <p>Allergens: {{x.allergies}}</p>
+                        <button class="btn my-btn view">View</button>
         </div>
         <div class="col-11 recipe_card hidden card" id="{{x._id}}">
-            <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top lrg-card">
-            <h3> {{x.name}}</h3>
-            <p>{{x.notes}}</p>
-            <h4>Ingredients</h4>
-            <p>{{x.ingredients}}</p>
-            <h4>Method</h4>
-            <p>{{x.method}}</p>
-            <button class="btn my-btn closed">Close</button>
-            <button class="btn my-btn"><a href="{{url_for('update_recipe', recipe_id=x._id)}}">Update</a></button>
+                        <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top lrg-card">
+                        <h3> {{x.name | capitalize}}</h3>
+                        <p>{{x.notes}}</p>
+                        <h4>Ingredients</h4>
+                        <p>{{x.ingredients}}</p>
+                        <h4>Method</h4>
+                        <p>{{x.method}}</p>
+                        <button class="btn my-btn closed">Close</button>
+                        <button class="btn my-btn"><a href="{{url_for('update_recipe', recipe_id=x._id)}}">Update</a></button>
         </div> 
-        {% endfor %}
+    {% endfor %}   
+ <h4 class="error hidden">Oops, looks like we don't have any recipes that fit your criteria yet. Try removing one of your options, not every section needs to be checked.</h4>
 </div>
 {% endblock %}
