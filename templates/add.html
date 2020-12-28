@@ -1,46 +1,66 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row">
-    <form action="{{url_for('add_recipe')}}" method="POST" class="row">
+<div>
+    <h3 class="sub-heading">Add Your Recipe...</h3>
+    <form action="{{url_for('add_recipe')}}" method="POST">
         <input type="text" id="name" name="name" required placeholder="Recipe name...">
-        <div class="col-md-3">
+        <hr>
+        <div class="col-lg-12 form-div">
         <h4>Cuisine</h4>
         {% for x in cuisine %}
-                    {{x.cuisine}}<input type="checkbox" value="{x.cuisine}}" name="cuisine"><br>
+                {{x.cuisine | capitalize}} <input type="checkbox" value="{x.cuisine}}" class="option" name="cuisine">
         {% endfor%}
+        <hr>
       </div>
-        <div class="col-md-3">
+        <div class="col-lg-12 form-div">
         <h4>Protein</h4>
         {% for x in protein %}
-                    {{x.protein}}<input type="checkbox" value="{x.protein}}" name="protein"><br>
+            {{x.protein | capitalize}} <input type="checkbox"  class="option" value="{x.protein}}" name="protein">
         {% endfor%}
+        <hr>
       </div>
-        <div class="col-md-3">
+        <div class="col-lg-12 form-div">
         <h4>carbs</h4>
         {% for x in carbs %}
-                    {{x.carbs}}<input type="checkbox" value="{x.carbs}}" name="carbs"><br>
+            {{x.carbs | capitalize}} <input type="checkbox" class="option" value="{x.carbs}}" name="carbs">
         {% endfor%}
+        <hr>
       </div>
-        <div class="col-md-3">
+        <div class="col-lg-12 form-div">
         <h4>Diet</h4>
         {% for x in diet %}
-                    <p>{{x.diet}}</p><input type="checkbox" value="{x.diet}}" name="diet"><br>
+            {{x.diet | capitalize}} <input type="checkbox" class="option" value="{x.diet}}" name="diet">
         {% endfor%}
+        <hr>
       </div>
-        <div class="col-md-3">
+        <div class="col-lg-12 form-div">
         <h4>Any allergens?</h4>
         {% for x in allergies %}
-                    {{x.allergies}}<input type="checkbox" value="{x.allergies}}" name="allergies"><br>
+            {{x.allergies | capitalize}} <input type="checkbox" class="option" value="{x.allergies}}" name="allergies">
         {% endfor%}
+        <hr>
         </div>
-        <label for="ingredients">Ingredient list:</label>
-        <textarea name="ingredients" id="ingredients" cols="30" rows="10" required></textarea>
-        <label for="method">Method:</label>
-        <textarea name="method" id="method" cols="30" rows="10" required></textarea>
-        <label for="notes">Notes:</label>
-        <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
-        <input type="text" id="image" name="image" placeholder="URL for image">
-        <button type="submit" id="add">Submit</button>
+        <div class="row">
+        <div class="col-lg-4 form-div"><br>
+            <label for="ingredients">Ingredient list:</label><br class="medium">
+            <textarea name="ingredients" id="ingredients" cols="30" rows="10" required></textarea>
+        </div>
+        <div class="col-lg-4 form-div">
+            <label for="method">Method:</label><br>
+            <textarea name="method" id="method" cols="30" rows="10" required></textarea>
+        </div>
+        <div class="col-lg-4 form-div">
+            <label for="notes">Notes:</label><br>
+            <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+        </div>
+        <div class="col-lg-4 form-div">
+            <label for="image">Add picture:</label>
+            <input type="text" id="image" name="image" placeholder="URL for image">
+        </div>
+        <div class="col-lg-4 form-div">
+            <button type="submit" id="add" class="alt-btn btn">Submit</button>
+        </div>
+        </div>
     </form>
 </div>
 {% endblock %}

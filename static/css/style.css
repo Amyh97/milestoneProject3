@@ -67,7 +67,7 @@ footer, footer a {
         margin-left: 20%;
     }
 }
-/*--- cards ---*/
+/*--- reused elements ---*/
 .card {
     border: 1px, black;
     padding-bottom: 5px;
@@ -91,6 +91,15 @@ footer, footer a {
     margin-bottom: 5px;
 }
 
+.alt-btn {
+    background-color: #c48b9f;
+    border: 1px black;
+    font-family: "pT sans", sans-serif;
+    border-radius: 5px;
+    color: black;
+    text-align: center;
+    margin: 10px;
+}
 /*--- show and hide cards with recipes on ---*/
 
 .hidden {
@@ -113,3 +122,48 @@ footer, footer a {
 }
 
 /*--- forms ---*/
+
+form {
+    margin-top: 3px;  
+    margin-left: 5px;
+    padding-left: 5px;
+     background-color: #f8bbd0;  
+   
+}
+
+textarea, #image, #name {
+    margin-left: 2px;
+    border-radius: 5px;
+}
+
+#name, #image {
+    height: 24px;
+    margin-top: 30px;
+}
+
+.form-div {
+   border: 2px black;
+   margin-top: 2px;
+}
+
+.sub-heading {
+    font-family: "Sansita Swashed", sans-serif;
+    text-align: center;
+    margin: 5px;
+}
+
+.option {
+    margin-right: 5px;
+}
+
+.medium {
+    display: none;
+}
+
+
+/*--- firm media queries ---*/
+@media (max-width:770px) {
+    .medium {
+        display: inline;
+    }
+}
