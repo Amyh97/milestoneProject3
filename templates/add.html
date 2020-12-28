@@ -1,40 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
 <div>
-    <h3 class="sub-heading">Add Your Recipe...</h3>
+    <h3 class="sub-heading-middle">Add Your Recipe...</h3>
     <form action="{{url_for('add_recipe')}}" method="POST">
         <input type="text" id="name" name="name" required placeholder="Recipe name...">
         <hr>
         <div class="col-lg-12">
-        <h4>Cuisine</h4>
+        <h4 class="sub-heading">Cuisine</h4>
         {% for x in cuisine %}
                 {{x.cuisine | capitalize}} <input type="checkbox" value="{x.cuisine}}" class="option" name="cuisine">
         {% endfor%}
         <hr>
       </div>
         <div class="col-lg-12">
-        <h4>Protein</h4>
+        <h4 class="sub-heading">Protein</h4>
         {% for x in protein %}
             {{x.protein | capitalize}} <input type="checkbox"  class="option" value="{x.protein}}" name="protein">
         {% endfor%}
         <hr>
       </div>
         <div class="col-lg-12">
-        <h4>carbs</h4>
+        <h4 class="sub-heading">carbs</h4>
         {% for x in carbs %}
             {{x.carbs | capitalize}} <input type="checkbox" class="option" value="{x.carbs}}" name="carbs">
         {% endfor%}
         <hr>
       </div>
         <div class="col-lg-12">
-        <h4>Diet</h4>
+        <h4 class="sub-heading">Diet</h4>
         {% for x in diet %}
             {{x.diet | capitalize}} <input type="checkbox" class="option" value="{x.diet}}" name="diet">
         {% endfor%}
         <hr>
       </div>
         <div class="col-lg-12">
-        <h4>Any allergens?</h4>
+        <h4 class="sub-heading">Any allergens?</h4>
         {% for x in allergies %}
             {{x.allergies | capitalize}} <input type="checkbox" class="option" value="{x.allergies}}" name="allergies">
         {% endfor%}
@@ -42,19 +42,19 @@
         </div>
         <div class="row">
         <div class="col-lg-4"><br>
-            <label for="ingredients">Ingredient list:</label><br class="medium">
+            <label class="sub-heading" for="ingredients">Ingredient list:</label><br class="medium">
             <textarea name="ingredients" id="ingredients" cols="30" rows="10" required></textarea>
         </div>
         <div class="col-lg-4">
-            <label for="method">Method:</label><br>
+            <label class="sub-heading" for="method">Method:</label><br>
             <textarea name="method" id="method" cols="30" rows="10" required></textarea>
         </div>
         <div class="col-lg-4">
-            <label for="notes">Notes:</label><br>
+            <label class="sub-heading" for="notes">Notes:</label><br>
             <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
         </div>
         <div class="col-lg-4">
-            <label for="image">Add picture:</label>
+            <label class="sub-heading" for="image">Add picture:</label>
             <input type="text" id="image" name="image" placeholder="URL for image">
         </div>
         <div class="col-lg-4">
