@@ -12,7 +12,7 @@ $('.closed').on('click', function() {
 //carousel on browse.html
 $(document).ready(function() {
     $('#my-carousel').carousel({
-      interval: 2000
+      interval: 3000
     })
 })
 
