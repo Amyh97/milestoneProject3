@@ -47,7 +47,11 @@ def recipes():
     if diet:
         query_object['diet'] = {'$in': diet}
     recipes = mongo.db.recipes.find(query_object)
-    return render_template('search.html', recipes=recipes)
+    return render_template('search.html', recipes=recipes,
+                           cuisine=mongo.db.cuisine.find(),
+                           protein=mongo.db.protein.find(),
+                           carbs=mongo.db.carbs.find(),
+                           diet=mongo.db.diet.find())
 
 
 """ methods for browse page to sort by 1 thing
@@ -149,6 +153,7 @@ not pre-checking checkboxes so being updated with empty values
 # recipe edit
 @app.route('/recipe/<recipe_id>/edit', methods=['GET', 'POST'])
 def update_recipe(recipe_id):
+    recipes = mongo.db.recipes.find({"id_": ObjectId(recipe_id)})
     if request.method == 'POST':
         mongo.db.recipes.update({'_id': ObjectId(recipe_id)}, {
             'name': request.form.get('name'),
@@ -159,9 +164,17 @@ def update_recipe(recipe_id):
             'allergies': request.form.getlist('allergies'),
             'ingredients': request.form.get('ingredients'),
             'method': request.form.get('method'),
-            'notes': request.form.get('notes')
+            'notes': request.form.get('notes'),
+            'image': request.form.get('image')
           })
-    return render_template('update.html')
+    return render_template('update.html',
+                           recipes=recipes,
+                           cuisine=mongo.db.cuisine.find(),
+                           protein=mongo.db.protein.find(),
+                           carbs=mongo.db.carbs.find(),
+                           diet=mongo.db.diet.find(),
+                           allergies=mongo.db.allergies.find()
+                           )
 
 # delete recipe
 

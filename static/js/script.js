@@ -19,8 +19,5 @@ $(document).ready(function() {
 //show and hide error message on search page if no results
 if ($('.overview').length == 0) {
     $('.error').removeClass("hidden")
-    console.log("empty")
 }
-else{
-    console.log("keep going")
-}
+

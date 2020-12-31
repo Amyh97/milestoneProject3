@@ -41,7 +41,7 @@ footer, footer a {
     color: #f8bbd0;
 }
 
-/*---base.html medic queries ---*/
+/*---base.html media queries ---*/
 @media (max-width: 770px) {
     .logo {
         display: none;
@@ -112,15 +112,36 @@ footer, footer a {
 
 /*--- browse.html ---*/
 
-#my-carousel {
-    height: auto;
-    max-width: 200px;
-}
-
 .carousel-item {
-    height: auto;
+    height: 266.667px;
+    overflow-y: hidden;
 }
 
+.carousel-item img {
+    position: absolute;
+    top: -75%;
+}
+
+.browse-card {
+    margin-left: 10%;
+    height: 400px;
+}
+
+.browse-card img {
+    margin-left: 12%;
+}
+/*--- browse media queries ---*/
+@media (max-width:1400px) {
+    .browse-card {
+        margin-left: 0;
+    }
+}
+
+@media (max-width:1100px) {
+    .browse-card {
+        margin-left: 5%;
+    }
+}
 /*--- forms ---*/
 
 form {
