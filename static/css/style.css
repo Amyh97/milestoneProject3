@@ -91,7 +91,7 @@ footer, footer a {
     margin-bottom: 5px;
 }
 
-.alt-btn {
+.alt-btn, .alt-btn a {
     background-color: #c48b9f;
     border: 1px black;
     font-family: "pT sans", sans-serif;
@@ -99,6 +99,14 @@ footer, footer a {
     color: black;
     text-align: center;
     margin: 10px;
+}
+
+/*--- results.html  ---*/
+@media (max-height:450px) {
+    .overview img, .recipe_card img {
+        max-width: 50% !important;
+        margin-left: 25%;
+    }
 }
 /*--- show and hide cards with recipes on ---*/
 

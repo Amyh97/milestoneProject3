@@ -1,72 +1,85 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <form action="{{url_for('update_recipe', recipe_id = recipes._id)}}" method="POST" class="col s12">
+    <form action="{{url_for('update_recipe', recipe_id = recipes._id)}}" method="POST" class="row">
         <input type="text" id="name" name="name" required value="{{recipes.name}}">
         <div class="row no gutters">
-        <div class="col-md-3">
-        <h4>Cuisine</h4>
+        <div class="col-lg-12">
+        <h4 class="sub-heading">Cuisine</h4>
         {% for x in cuisine %}
             {% if x.cuisine == recipes.cuisine %}
-                <p>{{x.cuisine}}</p><input type="checkbox" name="diet"  value="{{x.cuisine}}" checked><br>
+                {{x.cuisine | capitalize}} <input type="checkbox" name="diet"  value="{{x.cuisine}}" checked>
             {% else %}
-                <p>{{x.cuisine}}</p><input type="checkbox" name="diet"  value="{{x.cuisine}}"><br>
+                {{x.cuisine | capitalize}} <input type="checkbox" name="diet"  value="{{x.cuisine}}">
             {% endif %}
         {% endfor %}
+        <hr>
       </div>
-        <div class="col-md-3">
-        <h4>Protein</h4>
+        <div class="col-lg-12">
+        <h4 class="sub-heading">Protein</h4>
         {% for x in protein %}
             {% if x.protein == recipes.protein %}
-                <p>{{x.protein}}</p><input type="checkbox" name="diet"  value="{{x.protein}}" checked><br>
+                {{x.protein | capitalize}} <input type="checkbox" name="diet"  value="{{x.protein}}" checked>
             {% else %}
-                <p>{{x.protein}}</p><input type="checkbox" name="diet"  value="{{x.protein}}"><br>
+                {{x.protein | capitalize}} <input type="checkbox" name="diet"  value="{{x.protein}}">
             {% endif %}
         {% endfor %}
+        <hr>
       </div>
-        <div class="col-md-3">
-        <h4>carbs</h4>
+        <div class="col-lg-12">
+        <h4 class="sub-heading">Carbs</h4>
         {% for x in carbs %}
             {% if x.carbs == recipes.carbs %}
-                <p>{{x.carbs}}</p><input type="checkbox" name="diet"  value="{{x.carbs}}" checked><br>
+                {{x.carbs | capitalize}} <input type="checkbox" name="diet"  value="{{x.carbs}}" checked>
             {% else %}
-                <p>{{x.carbs}}</p><input type="checkbox" name="diet"  value="{{x.carbs}}"><br>
+                {{x.carbs | capitalize}} <input type="checkbox" name="diet"  value="{{x.carbs}}">
             {% endif %}
         {% endfor %}
+        <hr>
         </div>
-        <div class="col-md-3">
-        <h4>Diet</h4>
+        <div class="col-lg-12">
+        <h4 class="sub-heading">Diet</h4>
         {% for x in diet %}
             {% if x.diet == recipes.diet %}
-                <p>{{x.diet}}</p><input type="checkbox" name="diet"  value="{{x.diet}}" checked><br>
+                {{x.diet | capitalize}} <input type="checkbox" name="diet"  value="{{x.diet}}" checked>
             {% else %}
-                <p>{{x.diet}}</p><input type="checkbox" name="diet"  value="{{x.diet}}"><br>
+                {{x.diet | capitalize}} <input type="checkbox" name="diet"  value="{{x.diet}}">
             {% endif %}
         {% endfor %}
+        <hr>
       </div>
-        <div class="col-md-3">
-        <h4>Any allergens?</h4>
+        <div class="col-lg-12">
+        <h4 class="sub-heading">Any allergens?</h4>
         {% for x in allergies %}
             {% if x.allergies == recipes.allergies %}
-                <p>{{x.allergies}}</p><input type="checkbox" name="diet"  value="{{x.allergies}}" checked><br>
+                {{x.allergies | capitalize}} <input type="checkbox" name="diet"  value="{{x.allergies}}" checked>
             {% else %}
-                <p>{{x.allergies}}</p><input type="checkbox" name="diet"  value="{{x.allergies}}"><br>
+                {{x.allergies | capitalize}} <input type="checkbox" name="diet"  value="{{x.allergies}}">
             {% endif %}
         {% endfor %}
+        <hr>
         </div>
-        <div class="col-md-3">
-        <label for="ingredients">Ingredient list:</label>
+        
+        <div class="col-lg-4 col-md-6">
+        <label for="ingredients" class="sub-heading">Ingredient list:</label><br>
         <textarea name="ingredients" id="ingredients" cols="30" rows="10" required>{{recipes.ingredients}}</textarea>
-        <label for="method">Method:</label>
+        </div>
+        <div class="col-lg-4 col-md-6">
+        <label for="method" class="sub-heading">Method:</label><br>
         <textarea name="method" id="method" cols="30" rows="10" required>{{recipes.method}}</textarea>
-        <label for="notes">Notes:</label>
+        </div>
+        <div class="col-lg-4 col-md-6">
+        <label for="notes" class="sub-heading">Notes:</label><br>
         <textarea name="notes" id="notes" cols="30" rows="10">{{recipes.notes}}</textarea>
-        <label for="image">Image:</label>
+        </div>
+        <div class="col-lg-4 col-md-6">
+        <label for="image" class="sub-heading">Image:</label><br>
         <input type="text" name="image" placeholder="{{recipes.image}}">
         </div>
-        </div> 
-        <button type="submit">Update</button>
-        <button><a href="{{url_for('delete_recipe', recipe_id=recipes._id)}}">Delete</a></button>
+        </div>
+         
+        <button class="alt-btn btn" type="submit">Update</button>
+        <button class="btn alt-btn"><a href="{{url_for('delete_recipe', recipe_id=recipes._id)}}">Delete</a></button>
     </form>
 
 {% endblock %}
