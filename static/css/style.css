@@ -130,6 +130,12 @@ footer, footer a {
     top: -75%;
 }
 
+.carousel-heading {
+    z-index: 100;
+    position: relative;
+    top: 30%;
+    font-size: xxx-large;
+}
 .browse-card {
     margin-left: 10%;
     height: 400px;

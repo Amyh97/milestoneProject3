@@ -1,24 +1,29 @@
 {% extends "base.html" %}
 {% block content %} 
 <!---carosusel from bootstrap-->
-<div id="my-carousel" class="carousel slide" data-bs-ride="carousel">
+<div id="my-carousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{{one.image}}" class="d-block w-100" alt="{{one.name}}">
-        </div>
-        </div>
-        <div class="carousel-item">
-            <img src="{{two.image}}" class="d-block w-100" alt="{{two.name}}">
-        </div>
-        <div class="carousel-item">
-            <img src="{{three.image}}" class="d-block w-100" alt="{{three.name}}">
-        </div>
-        <div class="carousel-item">
-            <img src="{{four.image}}" class="d-block w-100" alt="{{four.name}}">
-        </div>
-        <div class="carousel-item">
-            <img src="{{five.image}}" class="d-block w-100" alt="{{five.name}}">
-        </div>
+    <div class="carousel-item active">
+        <h3 class="sub-heading-middle carousel-heading">New recipes added by you....</h3>
+        <img src="{{one.image}}" class="d-block w-100" alt="{{one.name}}">
+    </div>
+    <div class="carousel-item">
+        <h3 class="sub-heading-middle carousel-heading">New recipes added by you....</h3>
+      <img src="{{two.image}}" class="d-block w-100" alt="{{two.name}}">
+    </div>
+    <div class="carousel-item">
+        <h3 class="sub-heading-middle carousel-heading">New recipes added by you....</h3>
+      <img src="{{three.image}}" class="d-block w-100" alt="{{three.name}}">
+    </div>
+    <div class="carousel-item">
+        <h3 class="sub-heading-middle carousel-heading">New recipes added by you....</h3>
+      <img src="{{four.image}}" class="d-block w-100" alt="{{four.name}}">
+    </div>
+    <div class="carousel-item">
+        <h3 class="sub-heading-middle carousel-heading">New recipes added by you....</h3>
+      <img src="{{five.image}}" class="d-block w-100" alt="{{five.name}}">
+    </div>
+  </div>
 </div>
 <!--- end carousel code-->
 <!--- category cards, bootstrap cards-->
@@ -97,7 +102,7 @@
     </div>
     <div class="col-lg-4 col-md-5">
         <div class="card browse-card" style="width: 18rem;">
-            <img src="static/images/italian.png" class="card-img-top" alt="Italian Flag">
+            <img src="static/images/pork.png" class="card-img-top" alt="Pork">
             <div class="card-body">
                     <h5 class="card-title" id="pork">Pork meals</h5>
                     <button type="submit" class="btn my-btn"><a href="{{url_for('search_pork')}}">Search...</a></button>   
