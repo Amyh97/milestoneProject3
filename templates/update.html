@@ -7,83 +7,92 @@
         <div class="col-lg-12">
         <h4 class="sub-heading">Cuisine</h4>
         {% for x in cuisine %}
-            {% if x.cuisine == recipes.cuisine %}
-                {{x.cuisine | capitalize}} <input type="checkbox" name="diet"  value="{{x.cuisine}}" checked>
-            {% else %}
-                {{x.cuisine | capitalize}} <input type="checkbox" name="diet"  value="{{x.cuisine}}">
-            {% endif %}
+            {% for y in recipes.cuisine %}
+                {% if x.cuisine == y %}
+                    {{x.cuisine | capitalize}} <input type="checkbox" name="cuisine"  value="{{x.cuisine}}" checked>
+                {% else %}
+                    {{x.cuisine | capitalize}} <input type="checkbox" name="cuisine"  value="{{x.cuisine}}">
+                {% endif %}
+            {% endfor %}
         {% endfor %}
         <hr>
       </div>
         <div class="col-lg-12">
         <h4 class="sub-heading">Protein</h4>
         {% for x in protein %}
-            {% if x.protein == recipes.protein %}
-                {{x.protein | capitalize}} <input type="checkbox" name="diet"  value="{{x.protein}}" checked>
-            {% else %}
-                {{x.protein | capitalize}} <input type="checkbox" name="diet"  value="{{x.protein}}">
-            {% endif %}
+            {% for y in recipes.protein %}
+                {% if x.protein == y %}
+                    {{x.protein | capitalize}} <input type="checkbox" name="protein"  value="{{x.protein}}" checked>
+                {% else %}
+                    {{x.protein | capitalize}} <input type="checkbox" name="protein"  value="{{x.protein}}">
+                {% endif %}
+            {% endfor %}
         {% endfor %}
         <hr>
       </div>
         <div class="col-lg-12">
         <h4 class="sub-heading">Carbs</h4>
         {% for x in carbs %}
-            {% if x.carbs == recipes.carbs %}
-                {{x.carbs | capitalize}} <input type="checkbox" name="diet"  value="{{x.carbs}}" checked>
+            {% for y in recipes.carbs %}
+            {% if x.carbs == y %}
+                {{x.carbs | capitalize}} <input type="checkbox" name="carbs"  value="{{x.carbs}}" checked>
             {% else %}
-                {{x.carbs | capitalize}} <input type="checkbox" name="diet"  value="{{x.carbs}}">
+                {{x.carbs | capitalize}} <input type="checkbox" name="carbs"  value="{{x.carbs}}">
             {% endif %}
+            {% endfor %}
         {% endfor %}
         <hr>
         </div>
         <div class="col-lg-12">
         <h4 class="sub-heading">Diet</h4>
         {% for x in diet %}
-            {% if x.diet == recipes.diet %}
-                {{x.diet | capitalize}} <input type="checkbox" name="diet"  value="{{x.diet}}" checked>
-            {% else %}
-                {{x.diet | capitalize}} <input type="checkbox" name="diet"  value="{{x.diet}}">
-            {% endif %}
+            {% for y in recipes.diet %}
+                {% if x.diet == y %}
+                    {{x.diet | capitalize}} <input type="checkbox" name="diet"  value="{{x.diet}}" checked>
+                {% else %}
+                    {{x.diet | capitalize}} <input type="checkbox" name="diet"  value="{{x.diet}}">
+                {% endif %}
+            {% endfor %}
         {% endfor %}
         <hr>
       </div>
         <div class="col-lg-12">
         <h4 class="sub-heading">Any allergens?</h4>
         {% for x in allergies %}
-            {% if x.allergies == recipes.allergies %}
-                {{x.allergies | capitalize}} <input type="checkbox" name="diet"  value="{{x.allergies}}" checked>
-            {% else %}
-                {{x.allergies | capitalize}} <input type="checkbox" name="diet"  value="{{x.allergies}}">
-            {% endif %}
+            {% for y in recipes.allergies %}
+                {% if x.allergies == y %}
+                    {{x.allergies | capitalize}} <input type="checkbox" name="allergies"  value="{{x.allergies}}" checked>
+                {% else %}
+                    {{x.allergies | capitalize}} <input type="checkbox" name="allergies"  value="{{x.allergies}}">
+                {% endif %}
+            {% endfor %}
         {% endfor %}
         <hr>
-        </div>
-        
+        </div> 
         <div class="col-lg-4 col-md-6">
-        <label for="ingredients" class="sub-heading">Ingredient list:</label><br>
-        <textarea name="ingredients" id="ingredients" cols="30" rows="10" required>{{recipes.ingredients}}</textarea>
-        </div>
-        <div class="col-lg-4 col-md-6">
-        <label for="method" class="sub-heading">Method:</label><br>
-        <textarea name="method" id="method" cols="30" rows="10" required>{{recipes.method}}</textarea>
+            <label for="ingredients" class="sub-heading">Ingredient list:</label><br>
+            <textarea name="ingredients" id="ingredients" cols="30" rows="10" required>{{recipes.ingredients}}</textarea>
         </div>
         <div class="col-lg-4 col-md-6">
-        <label for="notes" class="sub-heading">Notes:</label><br>
-        <textarea name="notes" id="notes" cols="30" rows="10">{{recipes.notes}}</textarea>
+            <label for="method" class="sub-heading">Method:</label><br>
+            <textarea name="method" id="method" cols="30" rows="10" required>{{recipes.method}}</textarea>
         </div>
         <div class="col-lg-4 col-md-6">
-        <label for="image" class="sub-heading">Image:</label><br>
-        <input type="text" name="image" placeholder="{{recipes.image}}">
+            <label for="notes" class="sub-heading">Notes:</label><br>
+            <textarea name="notes" id="notes" cols="30" rows="10">{{recipes.notes}}</textarea>
         </div>
-        <div class="col-lg-4 col-md-6>
-            <label class="sub-heading" for="source">Source of Recipe:</label>
-            <input type="text" id="source" name="source">
+        <div class="col-lg-4 col-md-6">
+            <label for="image" class="sub-heading">Image:</label><br>
+            <input type="text" name="image"  value="{{recipes.image}}">
         </div>
+        <div class="col-lg-4 col-md-6">
+            <label class="sub-heading" for="source">Source of Recipe:</label><br>
+            <input type="text" id="source" name="source" value="{{recipes.source}}">
         </div>
          
         <button class="alt-btn btn" type="submit">Update</button>
         <button class="btn alt-btn"><a href="{{url_for('delete_recipe', recipe_id=recipes._id)}}">Delete</a></button>
+        </div>
     </form>
 
 {% endblock %}

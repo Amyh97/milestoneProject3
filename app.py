@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from os import path
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -132,7 +132,8 @@ def add_recipe():
             "ingredients": request.form.getlist("ingredients"),
             "method": request.form.get("method"),
             "notes": request.form.get("notes"),
-            "image": request.form.get("image")
+            "image": request.form.get("image"),
+            "source":request.form.get("source")
         }
         mongo.db.recipes.insert_one(new_recipe)
     return render_template(
@@ -145,15 +146,10 @@ def add_recipe():
     )
 
 
-""" update recipes page
-not pre-checking checkboxes so being updated with empty values
-"""
-
-
 # recipe edit
 @app.route('/recipe/<recipe_id>/edit', methods=['GET', 'POST'])
 def update_recipe(recipe_id):
-    recipes = mongo.db.recipes.find({"id_": ObjectId(recipe_id)})
+    recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     if request.method == 'POST':
         mongo.db.recipes.update({'_id': ObjectId(recipe_id)}, {
             'name': request.form.get('name'),
@@ -165,15 +161,17 @@ def update_recipe(recipe_id):
             'ingredients': request.form.get('ingredients'),
             'method': request.form.get('method'),
             'notes': request.form.get('notes'),
-            'image': request.form.get('image')
+            'image': request.form.get('image'),
+            'source': request.form.get('source')
           })
+    print(recipes)
     return render_template('update.html',
                            recipes=recipes,
-                           cuisine=mongo.db.cuisine.find(),
-                           protein=mongo.db.protein.find(),
-                           carbs=mongo.db.carbs.find(),
-                           diet=mongo.db.diet.find(),
-                           allergies=mongo.db.allergies.find()
+                           cuisine=list(mongo.db.cuisine.find()),
+                           protein=list(mongo.db.protein.find()),
+                           carbs=list(mongo.db.carbs.find()),
+                           diet=list(mongo.db.diet.find()),
+                           allergies=list(mongo.db.allergies.find())
                            )
 
 # delete recipe
@@ -182,6 +180,7 @@ def update_recipe(recipe_id):
 @app.route('/recipe/<recipe_id>/delete')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('browse_recipes'))
 
 
 if __name__ == "__main__":
