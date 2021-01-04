@@ -5,14 +5,14 @@
      {% for x in recipes %}
         <div class="col-md-3 overview card">
             <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
-            <h3> {{x.name}}</h3>
+            <h3> {{x.name | capitalize}}</h3>
             <p>{{x.notes}}</p>
             <p>Allergens: {{x.allergies}}</p>
             <button class="btn my-btn view">View</button>
         </div>
         <div class="col-11 recipe_card hidden card" id="{{x._id}}">
             <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top lrg-card">
-            <h3> {{x.name}}</h3>
+            <h3> {{x.name | capitalize }}</h3>
             <p>{{x.notes}}</p>
             <h4>Ingredients</h4>
             <p>{{x.ingredients}}</p>
