@@ -26,7 +26,7 @@
         <div class="col-lg-12">
         <h4 class="sub-heading">Diet</h4>
         {% for x in diet %}
-            {{x.diet | capitalize}}<input type="checkbox" class="option" value="{x.diet}}" name="diet">
+            {{x.diet | capitalize}}<input type="checkbox" class="option" value="{{x.diet}}" name="diet">
         {% endfor%}
         <hr>
       </div>
