@@ -47,7 +47,9 @@
                         <h3> {{x.name | capitalize}}</h3>
                         <p>{{x.notes}}</p>
                         <h4>Ingredients</h4>
-                        <p>{{x.ingredients}}</p>
+                        {% for y in x.ingredients.split('\n') %}
+                           <p>{{ y }}</p>
+                        {% endfor %}
                         <h4>Method</h4>
                         <p>{{x.method}}</p>
                         <h5>Source of Recipe</h5>
