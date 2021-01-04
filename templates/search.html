@@ -35,7 +35,7 @@
 <!--- cards  with overview and detail of recipes -->
 <div class="row no-gutters">
     {% for x in recipes %}
-        <div class="col-lg-3 col-md-4 overview card">
+        <div class="col-lg-3 col-md-4 overview card my-card">
                         <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
                         <h3> {{x.name | capitalize}}</h3>
                         <p>{{x.notes}}</p>
@@ -52,8 +52,8 @@
                         <p>{{x.method}}</p>
                         <h5>Source of Recipe</h5>
                         <p>{{x.source}}</p>
-                        <button class="btn my-btn closed">Close</button>
-                        <a href="{{url_for('update_recipe', recipe_id=x._id)}}"><button class=" update btn my-btn">Update</button></a>
+                        <button class="btn my-btn closed card-btn">Close</button>
+                        <a href="{{url_for('update_recipe', recipe_id=x._id)}}"><button class=" card-btn btn my-btn">Update</button></a>
         </div> 
     {% endfor %}   
  <h4 class="error hidden">Oops, looks like we don't have any recipes that fit your criteria yet. Try removing one of your options, not every section needs to be checked.</h4>

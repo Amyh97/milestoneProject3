@@ -3,7 +3,7 @@
     <a href="{{url_for(('browse_recipes'))}}"><button class="btn my-btn">Back</button></a>
     <div class="row no-gutters">
      {% for x in recipes %}
-        <div class="col-md-3 overview card">
+        <div class="col-md-3 overview card my-card">
             <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
             <h3> {{x.name | capitalize}}</h3>
             <p>{{x.notes}}</p>
@@ -20,8 +20,8 @@
             <p>{{x.method}}</p>
             <h5>Source of Recipe</h5>
             <p>{{x.source}}</p>
-            <button class="btn my-btn closed">Close</button>
-            <a href="{{url_for('update_recipe', recipe_id=x._id)}}"><button class="btn my-btn">Update</button></a>
+            <button class="btn my-btn closed card-btn">Close</button>
+            <a href="{{url_for('update_recipe', recipe_id=x._id)}}"><button class="btn my-btn card-btn">Update</button></a>
         </div> 
     {% endfor %}
 </div>
