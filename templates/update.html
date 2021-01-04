@@ -91,7 +91,7 @@
         </div>
          
         <button class="alt-btn btn" type="submit">Update</button>
-        <button class="btn alt-btn"><a href="{{url_for('delete_recipe', recipe_id=recipes._id)}}">Delete</a></button>
+        <a href="{{url_for('delete_recipe', recipe_id=recipes._id)}}"><button class="btn alt-btn">Delete</button></a>
         </div>
     </form>
 

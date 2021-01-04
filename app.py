@@ -133,7 +133,7 @@ def add_recipe():
             "method": request.form.get("method"),
             "notes": request.form.get("notes"),
             "image": request.form.get("image"),
-            "source":request.form.get("source")
+            "source": request.form.get("source")
         }
         mongo.db.recipes.insert_one(new_recipe)
     return render_template(

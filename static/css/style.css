@@ -81,6 +81,10 @@ footer, footer a {
     justify-content: center;
 }
 
+.update {
+    width: 100%;
+}
+
 .my-btn, .my-btn a {
     border: 1px, black;
     font-family: "PT sans", sans-serif;
@@ -90,6 +94,7 @@ footer, footer a {
     text-align: center;
     margin-bottom: 5px;
 }
+
 
 .alt-btn, .alt-btn a {
     background-color: #c48b9f;
@@ -135,6 +140,7 @@ footer, footer a {
     position: relative;
     top: 30%;
     font-size: xxx-large;
+    color: #f8bbd0;
 }
 .browse-card {
     margin-left: 10%;

@@ -53,7 +53,7 @@
                         <h5>Source of Recipe</h5>
                         <p>{{x.source}}</p>
                         <button class="btn my-btn closed">Close</button>
-                        <button class="btn my-btn"><a href="{{url_for('update_recipe', recipe_id=x._id)}}">Update</a></button>
+                        <a href="{{url_for('update_recipe', recipe_id=x._id)}}"><button class=" update btn my-btn">Update</button></a>
         </div> 
     {% endfor %}   
  <h4 class="error hidden">Oops, looks like we don't have any recipes that fit your criteria yet. Try removing one of your options, not every section needs to be checked.</h4>
