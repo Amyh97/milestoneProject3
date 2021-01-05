@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <a href="{{url_for(('browse_recipes'))}}"><button class="btn my-btn">Back</button></a>
+    <div class="row results-row">
+        <div class="col-1">
+            <a href="{{url_for(('browse_recipes'))}}"><button class="btn my-btn">Back</button></a>
+        </div>
+        <div class="col-10">
+            <h3 class="sub-heading-middle">{{heading}}</h3>
+        </div>
+    </div>
     <div class="row no-gutters">
      {% for x in recipes %}
         <div class="col-md-3 overview card my-card">
