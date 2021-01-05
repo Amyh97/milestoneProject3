@@ -37,8 +37,14 @@ header h3 {
     padding: 20px;
 }
 
-footer, footer a {
-    color: #f8bbd0;
+footer {
+    background-color: #c48b9f;
+    padding: 12px;
+    color: #ffffff;
+}
+
+footer a {
+    color: #ffffff;
 }
 
 /*---base.html media queries ---*/
