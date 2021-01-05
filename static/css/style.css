@@ -162,6 +162,11 @@ footer, footer a {
 .browse-card img {
     margin-left: 12%;
 }
+
+.results_row {
+    height: 50px;
+}
+
 /*--- browse media queries ---*/
 @media (max-width:1400px) {
     .browse-card {

@@ -2,6 +2,15 @@
 {% block content %}
 
     <form action="{{url_for('update_recipe', recipe_id = recipes._id)}}" method="POST" class="row">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flashes">
+                    {% for message in messages %}
+                        <h3>{{ message }}</h3>
+                    {% endfor %}
+                </div> 
+            {% endif %}  
+        {% endwith %}
         <input type="text" id="name" name="name" required value="{{recipes.name}}">
         <div class="row no gutters">
         <div class="col-lg-12">
@@ -79,19 +88,21 @@
         </div>
         <div class="col-lg-4 col-md-6">
             <label for="notes" class="sub-heading">Notes:</label><br>
-            <textarea name="notes" id="notes" cols="30" rows="10">{{recipes.notes}}</textarea>
+            <textarea name="notes" id="notes" cols="30" rows="10" maxlength="500">{{recipes.notes}}</textarea>
         </div>
         <div class="col-lg-4 col-md-6">
-            <label for="image" class="sub-heading">Image:</label><br>
-            <input type="text" name="image"  value="{{recipes.image}}">
+            <label for="image" class="sub-heading">Picture:</label><br>
+            <input type="text" name="image"  placeholder="URL for picture location" value="{{recipes.image}}">
         </div>
         <div class="col-lg-4 col-md-6">
             <label class="sub-heading" for="source">Source of Recipe:</label><br>
             <input type="text" id="source" name="source" value="{{recipes.source}}">
         </div>
-         
+        <div class="col-lg-4 col-md-6">
+        <a href="{{url_for('recipes')}}"><button class="btn alt-btn">Cancel</button></a> 
         <button class="alt-btn btn" type="submit">Update</button>
         <a href="{{url_for('delete_recipe', recipe_id=recipes._id)}}"><button class="btn alt-btn">Delete</button></a>
+        </div>
         </div>
     </form>
 
