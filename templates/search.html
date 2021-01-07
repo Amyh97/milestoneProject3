@@ -35,7 +35,7 @@
 <!--- cards  with overview and detail of recipes -->
 <div class="row no-gutters">
     {% for x in recipes %}
-        <div class="col-lg-3 col-md-4 overview card my-card">
+        <div class="col-lg-3 col-md-5 overview card my-card">
              <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
             <h3> {{x.name | capitalize}}</h3>
             <p class="line-clamp">{{x.notes}}</p>

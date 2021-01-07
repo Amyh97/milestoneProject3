@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<div>
+<div class="row">
+    <div class="col-1">
+         <a href="{{url_for('recipes')}}"><button class="btn alt-btn">Cancel</button></a>
+    </div>
+    <div class="col-6 offset-2">
     <h3 class="sub-heading-middle">Add Your Recipe...</h3>
-    <form action="{{url_for('add_recipe')}}" method="POST">
+    </div>
+    <form action="{{url_for('add_recipe')}}" method="POST" class="add-form">
         <input type="text" id="name" name="name" required placeholder="Recipe name...">
         <hr>
         <div class="col-lg-12">
@@ -41,25 +46,25 @@
         <hr>
         </div>
         <div class="row">
-        <div class="col-lg-4"><br>
-            <label class="sub-heading" for="ingredients">Ingredient list:</label><br class="medium">
-            <textarea name="ingredients" id="ingredients" cols="30" rows="10" required></textarea>
+        <div class="col-lg-4">
+            <label class="sub-heading" for="ingredients">Ingredient list:</label><br>
+            <textarea name="ingredients" id="ingredients" cols="32" rows="10" required></textarea>
         </div>
         <div class="col-lg-4">
             <label class="sub-heading" for="method">Method:</label><br>
-            <textarea name="method" id="method" cols="30" rows="10" required></textarea>
+            <textarea name="method" id="method" cols="34" rows="10" required></textarea>
         </div>
         <div class="col-lg-4">
             <label class="sub-heading" for="notes">Notes:</label><br>
-            <textarea name="notes" id="notes" cols="30" rows="10" maxlength="500"></textarea>
+            <textarea name="notes" id="notes" cols="32" rows="10" maxlength="500"></textarea>
         </div>
         <div class="col-lg-4">
-            <label class="sub-heading" for="image">Add picture:</label>
+            <label class="sub-heading" for="image">Add a picture:</label>
             <input type="text" id="image" name="image" placeholder="URL for image location">
         </div>
         <div class="col-lg-4">
             <label class="sub-heading" for="source">Source of Recipe:</label>
-            <input type="text" id="source" name="source">
+            <input type="text" id="source" name="source" placeholder="Book/Website">
         </div>
         <div class="col-lg-4">
             <button type="submit" id="add" class="alt-btn btn">Submit</button>
@@ -67,5 +72,4 @@
         </div>
         </div>
     </form>
-</div>
 {% endblock %}
