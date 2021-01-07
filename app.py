@@ -21,17 +21,13 @@ app.config.update(SECRET_KEY=os.urandom(24))
 @app.route('/')
 def browse_recipes():
     carousel = mongo.db.recipes.find()
-    recipe = (list(carousel)[-5:])
-    one = recipe[0]
-    two = recipe[1]
-    three = recipe[2]
-    four = recipe[3]
-    five = recipe[4]
-    return render_template('browse.html', one=one,
-                           two=two, three=three, four=four, five=five)
+    recipes = (list(carousel)[-5:])
+    category = mongo.db.categories.find()
+    return render_template('browse.html', recipes=recipes,
+                           category=category)
 
 
-# search recipe
+# search and browse
 @app.route('/recipes', methods=["POST", "GET"])
 def recipes():
     query_object = {}
@@ -53,73 +49,6 @@ def recipes():
                            protein=mongo.db.protein.find(),
                            carbs=mongo.db.carbs.find(),
                            diet=mongo.db.diet.find())
-
-
-""" methods for browse page to sort by 1 thing
-in browse.html and opens results.html """
-
-
-@app.route('/search_italian', methods=['GET'])
-def search_italian():
-    heading = "Italian Dishes"
-    italian = mongo.db.recipes.find({'cuisine': 'italian'})
-    return render_template('results.html', recipes=italian, heading=heading)
-
-
-@app.route('/search_rice', methods=['GET'])
-def search_rice():
-    heading = "Rice Dishes"
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                            {'carbs': 'rice'}), heading=heading)
-
-
-@app.route('/search_vegetarian', methods=['GET'])
-def search_vegetarian():
-    heading = "Vegetarian Dishes"
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'diet': 'vegetarian'}), heading=heading)
-
-
-@app.route('/search_pasta', methods=['GET'])
-def search_pasta():
-    heading = "Pasta Dishes"
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'carbs': 'pasta'}), heading=heading)
-
-
-@app.route('/search_sweet', methods=['GET'])
-def search_sweet():
-    heading = "Sweet Treats"
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'cuisine': 'sweet'}), heading=heading)
-
-
-@app.route('/search_beef', methods=['GET'])
-def search_beef():
-    heading = "Beef Dishes"
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'protein': 'beef'}), heading=heading)
-
-
-@app.route('/search_poultry', methods=['GET'])
-def search_poultry():
-    heading = "Poultry Dishes"
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'protein': 'poultry'}), heading=heading)
-
-
-@app.route('/search_mexican', methods=['GET'])
-def search_mexican():
-    heading = "Mexican Dishes"
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                        {'cuisine': 'mexican'}), heading=heading)
-
-
-@app.route('/search_pork', methods=['GET'])
-def search_pork():
-    heading = "Pork Dishes"
-    return render_template('results.html', recipes=mongo.db.recipes.find(
-                            {'protein': 'pork'}), heading=heading)
 
 
 # add recipe

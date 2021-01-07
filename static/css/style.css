@@ -80,6 +80,7 @@ footer a {
     margin-bottom: 10px;
 }
 
+ /*--- search.html ---*/
 .card-img-top {
     padding: 10px;
     max-height: auto;
@@ -112,12 +113,11 @@ footer a {
     margin: 10px;
 }
 
-/*--- recipe cards ---*/
-
 .recipe_card {
     display: block;
 }
 
+/*--- search media queries ---*/
 @media (max-height:450px) {
     .overview img, .recipe_card img {
         max-width: 50% !important;
@@ -162,11 +162,18 @@ footer a {
 }
 .browse-card {
     margin-left: 10%;
-    height: 400px;
+}
+
+.browse, .browse .btn {
+    background-color: #ffffff;
+    width: 100%;
+    text-align: left;
 }
 
 .browse-card img {
-    margin-left: 12%;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
 }
 
 .results_row {
