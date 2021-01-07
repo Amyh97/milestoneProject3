@@ -36,11 +36,16 @@
 <div class="row no-gutters">
     {% for x in recipes %}
         <div class="col-lg-3 col-md-4 overview card my-card">
-                        <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
-                        <h3> {{x.name | capitalize}}</h3>
-                        <p>{{x.notes}}</p>
-                        <p>Allergens: {{x.allergies}}</p>
-                        <button class="btn my-btn view">View</button>
+             <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
+            <h3> {{x.name | capitalize}}</h3>
+            <p class="line-clamp">{{x.notes}}</p>
+            <p>Allergens: </p>
+            <ul>
+                {% for y in x.allergies %}
+                    <li class="allergies">{{ y }}</li>
+                {% endfor %}
+            </ul>
+            <button class="btn my-btn view">View</button>
         </div>
         <div class="col-11 recipe_card hidden card" id="{{x._id}}">
                         <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top lrg-card">

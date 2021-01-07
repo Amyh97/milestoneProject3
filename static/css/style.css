@@ -117,6 +117,13 @@ footer a {
     display: block;
 }
 
+.view {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    width: 95%;
+}
+
 /*--- search media queries ---*/
 @media (max-height:450px) {
     .overview img, .recipe_card img {
@@ -124,7 +131,7 @@ footer a {
         margin-left: 25%;
     }
 }
-/*--- show and hide cards with recipes on ---*/
+/*--- recipe cards ---*/
 
 .hidden {
     display: none
@@ -136,10 +143,22 @@ footer a {
 
 .my-card {
     margin-left: 5%;
+    height: 505px;
 }
 
-.my-card img {
-    margin-left: 12%;
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.allergies {
+    float: left;
+    text-decoration: none;
+    margin: 10px;
+    list-style-type: none;
 }
 /*--- browse.html ---*/
 
@@ -170,7 +189,7 @@ footer a {
     text-align: left;
 }
 
-.browse-card img {
+.browse-card img, .overview img {
     height: 200px;
     width: 100%;
     object-fit: cover;
