@@ -1,31 +1,31 @@
-{% extends "base.html" %}
-{% block content %} 
+{% extends "base.html" %} {% block content %}
 <!---carosusel from bootstrap-->
 <div id="my-carousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    {% for recipe in recipes %}
-    <!-- if statement here adds active class to first element only as per bootstrap documentation -->
-       <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+    <div class="carousel-inner">
+        {% for recipe in recipes %}
+        <!-- if statement here adds active class to first element only as per bootstrap documentation -->
+        <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
             <h3 class="sub-heading-middle carousel-heading">New recipes added by you....</h3>
-            <img src="{{recipe.image}}" class="d-block w-100" alt="{{recipe.name}}">
+            <img src="{{recipe.image}}" class="d-block w-100" alt="{{recipe.name}}" />
         </div>
-    {% endfor %}
-  </div>
+        {% endfor %}
+    </div>
 </div>
 <!--- end carousel code-->
 <!--- category cards, bootstrap cards-->
 <div class="row">
     {% for x in category %}
     <div class="col-lg-4 col-md-6">
-              <div class="card browse-card" style="width: 18rem;">
-                <img src="{{ x.image_url }}" class="card-img-top" alt="{{x.value}}">
-                <div class="card-body">
-                    <form class="browse" method="POST" action="recipes">
-                        <input class="hidden" name="{{x.key}}" value="{{x.value}}">
-                        <a href="{{url_for('recipes')}}"><button class="btn"><h5 class="card-title" id="italian">{{ x.value | capitalize }}</h5></button></a>
-                    </form>
-                </div>
-             </div>
+        <div class="card browse-card" style="width: 18rem;">
+            <img src="{{ x.image_url }}" class="card-img-top" alt="{{x.value}}" />
+            <div class="card-body">
+                <!-- Use form with hidden prechecked input to pass key and value to search page-->
+                <form class="browse" method="POST" action="recipes">
+                    <input type="checkbox" class="hidden" name="{{x.key}}" value="{{x.value}}" checked />
+                    <button class="btn card-title">{{ x.value | capitalize }}</button>
+                </form>
+            </div>
+        </div>
     </div>
     {% endfor %}
 </div>

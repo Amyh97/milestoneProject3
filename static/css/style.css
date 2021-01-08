@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Sansita+Swashed:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&family=Sansita+Swashed:wght@500&display=swap");
 
 body {
     margin: 0;
@@ -23,8 +23,8 @@ header h1 {
 }
 
 header h3 {
-    font-family: "PT Sans", sans-serif;
-    font-size :24px;
+    font-family: "Sansita Swashed", sans-serif;
+    font-size: 24px;
     text-align: center;
 }
 
@@ -58,32 +58,33 @@ footer a {
         font-size: 36px;
         font-weight: 500;
         text-align: center;
-}
+    }
 
     .header h3 {
         font-family: "PT Sans", sans-serif;
-        font-size :24px;
+        font-size: 24px;
         text-align: center;
+    }
 }
 
-}
-
-@media (max-width:380px) {
+@media (max-width: 380px) {
     .menu {
         margin-left: 20%;
     }
 }
 /*--- reused elements ---*/
 .card {
-    border: 1px, black;
+    border: 1px black;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
 
- /*--- search.html ---*/
+button a {
+    width: 100%;
+}
+/*--- search.html ---*/
 .card-img-top {
     padding: 10px;
-    max-height: auto;
     width: 75%;
     justify-content: center;
 }
@@ -92,8 +93,9 @@ footer a {
     width: 100%;
 }
 
-.my-btn, .my-btn a {
-    border: 1px, black;
+.my-btn,
+.my-btn a {
+    border: 1px black;
     font-family: "PT sans", sans-serif;
     border-radius: 5px;
     background-color: #f8bbd0;
@@ -102,8 +104,8 @@ footer a {
     margin-bottom: 5px;
 }
 
-
-.alt-btn, .alt-btn a {
+.alt-btn,
+.alt-btn a {
     background-color: #c48b9f;
     border: 1px black;
     font-family: "pT sans", sans-serif;
@@ -111,10 +113,6 @@ footer a {
     color: black;
     text-align: center;
     margin: 10px;
-}
-
-.recipe_card {
-    display: block;
 }
 
 .view {
@@ -125,23 +123,16 @@ footer a {
 }
 
 /*--- search media queries ---*/
-@media (max-height:450px) {
-    .overview img, .recipe_card img {
-        max-width: 50% !important;
-        margin-left: 25%;
-    }
-}
-
-@media (min-width:750px) and (max-width:1050px) {
+@media (min-width: 750px) and (max-width: 1050px) {
     .my-card {
         height: 540px;
         margin: 0;
     }
 }
-/*--- recipe cards ---*/
 
+/*--- recipe cards ---*/
 .hidden {
-    display: none
+    display: none;
 }
 
 .lrg-card {
@@ -154,11 +145,12 @@ footer a {
 }
 
 .line-clamp {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-  text-overflow: ellipsis;
+    /*--- keeps notes max length on card ---*/
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .allergies {
@@ -167,79 +159,81 @@ footer a {
     margin: 10px;
     list-style-type: none;
 }
-/*--- browse.html ---*/
 
+/*--- browse.html ---*/
 .carousel-item {
     height: 266.667px;
     overflow-y: hidden;
 }
 
 .carousel-item img {
+    /*--- show center section of image covering div ---*/
     position: absolute;
     top: -75%;
 }
 
 .carousel-heading {
-    z-index: 100;
+    z-index: 100; /*--- ensure text is on top---*/
     position: relative;
     top: 30%;
-    font-size: xxx-large;
+    font-size: 3rem;
     color: #f8bbd0;
 }
 .browse-card {
     margin-left: 10%;
 }
 
-.browse, .browse .btn {
+.browse {
+    /*--- needed to override purple form background ---*/
     background-color: #ffffff;
     width: 100%;
     text-align: left;
 }
 
-.browse-card img, .overview img {
+.browse-card img,
+.overview img {
+    /*--- overview element on search.html ---*/
     height: 200px;
     width: 100%;
     object-fit: cover;
 }
 
-.results_row {
-    height: 50px;
-}
-
 /*--- browse media queries ---*/
-@media (max-width:1400px) {
+@media (max-width: 1400px) {
     .browse-card {
         margin-left: 0;
     }
 }
 
-@media (max-width:1100px) {
+@media (max-width: 1100px) {
     .browse-card {
         margin-bottom: 5px;
         width: 100% !important; /*--- important used to override external css ---*/
     }
 }
-/*--- forms ---*/
 
+/*--- forms ---*/
 form {
-    margin-top: 3px;  
+    margin-top: 3px;
     margin-left: 5px;
     padding-left: 5px;
-     background-color: #f8bbd0;  
-   
+    background-color: #f8bbd0;
 }
 
-.add-form, .update-form {
+.add-form,
+.update-form {
     padding: 5px;
     padding-right: 10px;
 }
 
-textarea, #image, #name {
+textarea,
+#image,
+#name {
     margin-left: 2px;
     border-radius: 5px;
 }
 
- #image {
+#image {
     height: 24px;
     margin-top: 0;
     margin-bottom: 25px;
@@ -265,7 +259,7 @@ textarea, #image, #name {
 
 /*--- form media queries ---*/
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
     .option {
         margin-right: 2px;
     }

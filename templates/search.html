@@ -1,68 +1,68 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h3 class="sub-heading-middle">Search Recipes</h3>
-    <form  method="POST" action="recipes" class="row">
-      <div class="col-lg-12">
+<!-- search form creates query_object in app.py-->
+<form method="POST" action="recipes" class="row">
+    <div class="col-lg-12">
         <h4 class="sub-heading">Cuisine</h4>
-        {% for x in cuisine %}
-            {{x.cuisine | capitalize}}<input type="checkbox" class="option" value="{{x.cuisine}}" name="cuisine">
+        {% for x in cuisine %} {{x.cuisine | capitalize}}<input type="checkbox" class="option" value="{{x.cuisine}}" name="cuisine" />
         {% endfor%}
-        <hr>
-      </div>
-        <div class="col-lg-12">
+        <hr />
+    </div>
+    <div class="col-lg-12">
         <h4 class="sub-heading">Protein</h4>
-        {% for x in protein %}
-            {{x.protein | capitalize}}<input type="checkbox" class="option" value="{{x.protein}}" name="protein">
+        {% for x in protein %} {{x.protein | capitalize}}<input type="checkbox" class="option" value="{{x.protein}}" name="protein" />
         {% endfor%}
-        <hr>
-      </div>
-        <div class="col-lg-12">
+        <hr />
+    </div>
+    <div class="col-lg-12">
         <h4 class="sub-heading">Carbs</h4>
-        {% for x in carbs %}
-            {{x.carbs | capitalize}}<input type="checkbox" class="option" value="{{x.carbs}}" name="carbs">
+        {% for x in carbs %} {{x.carbs | capitalize}}<input type="checkbox" class="option" value="{{x.carbs}}" name="carbs" />
         {% endfor%}
-        <hr>
-      </div>
-        <div class="col-lg-12">
+        <hr />
+    </div>
+    <div class="col-lg-12">
         <h4 class="sub-heading">Diet</h4>
-        {% for x in diet %}
-            {{x.diet | capitalize}}<input type="checkbox" class="option" value="{{x.diet}}" name="diet">
+        {% for x in diet %} {{x.diet | capitalize}}<input type="checkbox" class="option" value="{{x.diet}}" name="diet" />
         {% endfor%}
-        <hr>
-      </div>
-        <button class="btn alt-btn">Search</button>
-    </form>
+        <hr />
+    </div>
+    <button class="btn alt-btn">Search</button>
+</form>
 <!--- cards  with overview and detail of recipes -->
 <div class="row no-gutters">
     {% for x in recipes %}
-        <div class="col-lg-3 col-md-5 overview card my-card">
-             <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top">
-            <h3> {{x.name | capitalize}}</h3>
-            <p class="line-clamp">{{x.notes}}</p>
-            <p>Allergens: </p>
-            <ul>
-                {% for y in x.allergies %}
-                    <li class="allergies">{{ y }}</li>
-                {% endfor %}
-            </ul>
-            <button class="btn my-btn view">View</button>
-        </div>
-        <div class="col-11 recipe_card hidden card" id="{{x._id}}">
-                        <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top lrg-card">
-                        <h3> {{x.name | capitalize}}</h3>
-                        <p>{{x.notes}}</p>
-                        <h4>Ingredients</h4>
-                        {% for y in x.ingredients.split('\n') %}
-                           <p>{{ y }}</p>
-                        {% endfor %}
-                        <h4>Method</h4>
-                        <p>{{x.method}}</p>
-                        <h5>Source of Recipe</h5>
-                        <p>{{x.source}}</p>
-                        <button class="btn my-btn closed card-btn">Close</button>
-                        <a href="{{url_for('update_recipe', recipe_id=x._id)}}"><button class=" card-btn btn my-btn">Update</button></a>
-        </div> 
-    {% endfor %}   
- <h4 class="error hidden">Oops, looks like we don't have any recipes that fit your criteria yet. Try removing one of your options, not every section needs to be checked.</h4>
+    <div class="col-lg-3 col-md-5 overview card my-card">
+        <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top" />
+        <h3>{{x.name | capitalize}}</h3>
+        <p class="line-clamp">{{x.notes}}</p>
+        <p>Allergens:</p>
+        <ul>
+            <!-- secondary for loop stops results showing in square brackets as array-->
+            {% for y in x.allergies %}
+            <li class="allergies">{{ y }}</li>
+            {% endfor %}
+        </ul>
+        <button class="btn my-btn view">View</button>
+    </div>
+    <!-- more recipe detail on hidden card, when opened js removes other cards from page -->
+    <div class="col-11 recipe_card hidden card" id="{{x._id}}">
+        <img src="{{x.image}}" alt="{{x.name}}" class="card-img-top lrg-card" />
+        <h3>{{x.name | capitalize}}</h3>
+        <p>{{x.notes}}</p>
+        <h4>Ingredients</h4>
+        <!-- secondary for loop stops escaped chsracters printing to page -->
+        {% for y in x.ingredients.split('\n') %}
+        <p>{{ y }}</p>
+        {% endfor %}
+        <h4>Method</h4>
+        <p>{{x.method}}</p>
+        <h5>Source of Recipe</h5>
+        <p>{{x.source}}</p>
+        <button class="btn my-btn closed card-btn">Close</button>
+        <a class="card-btn btn my-btn" href="{{url_for('update_recipe', recipe_id=x._id)}}">Update</a>
+    </div>
+    {% endfor %}
+    <!-- if no results are found, show error message-->
+    <h4 class="error hidden">Oops, looks like we don't have any recipes that fit your criteria yet. Try removing one of your options, not every section needs to be checked.</h4>
 </div>
 {% endblock %}
