@@ -23,7 +23,8 @@ if ($(".overview").length == 0) {
 
 // close flash message
 $(document).ready(function () {
-    setTimeout(function() {
-        $("#successMessage").addClass('hidden')
-    }, 6000) 
+    setTimeout(function () {
+        $("#successMessage").addClass("hidden");
+    }, 6000);
 });
+
