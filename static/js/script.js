@@ -23,5 +23,5 @@ if ($(".overview").length == 0) {
 
 // close flash message
 $(document).ready(function () {
-    $("#successMessage").remove();
-}, 15000);
+    $("#successMessage").remove(), 15000;
+});
