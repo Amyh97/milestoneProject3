@@ -70,12 +70,7 @@ def add_recipe():
             "source": request.form.get("source")
         }
         mongo.db.recipes.insert_one(new_recipe)
-        return redirect(url_for('recipes',
-                        cuisine=mongo.db.cuisine.find(),
-                        protein=mongo.db.protein.find(),
-                        carbs=mongo.db.carbs.find(),
-                        diet=mongo.db.diet.find(),
-                        allergies=mongo.db.allergies.find()))
+        return redirect(url_for('recipes'))
     else:
         return render_template('add.html',
                                cuisine=mongo.db.cuisine.find(),
@@ -125,6 +120,7 @@ def update_recipe(recipe_id):
 
 @app.route('/recipe/<recipe_id>/delete')
 def delete_recipe(recipe_id):
+    flash("Thank you, this recipe has been deleted.")
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('recipes'))
 

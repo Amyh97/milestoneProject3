@@ -263,17 +263,7 @@ textarea, #image, #name {
     margin-right: 5px;
 }
 
-.medium {
-    display: none;
-}
-
-
 /*--- form media queries ---*/
-@media (max-width:770px) {
-    .medium {
-        display: inline;
-    }
-}
 
 @media (max-width:400px) {
     .option {

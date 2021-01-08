@@ -21,3 +21,8 @@ if ($('.overview').length == 0) {
     $('.error').removeClass("hidden")
 }
 
+// close flash message
+$(document).ready(function(){
+    $("#successMessage").remove();
+},25000);
+

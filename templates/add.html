@@ -7,6 +7,7 @@
     <div class="col-6 offset-2">
     <h3 class="sub-heading-middle">Add Your Recipe...</h3>
     </div>
+</div>
     <form action="{{url_for('add_recipe')}}" method="POST" class="add-form">
         <input type="text" id="name" name="name" required placeholder="Recipe name...">
         <hr>
@@ -56,15 +57,15 @@
         </div>
         <div class="col-lg-4">
             <label class="sub-heading" for="notes">Notes:</label><br>
-            <textarea name="notes" id="notes" cols="32" rows="10" maxlength="500"></textarea>
+            <textarea name="notes" id="notes" cols="32" rows="10" maxlength="500" required></textarea>
         </div>
         <div class="col-lg-4">
             <label class="sub-heading" for="image">Add a picture:</label>
-            <input type="text" id="image" name="image" placeholder="URL for image location">
+            <input type="url" id="image" name="image" placeholder="URL for image location" required>
         </div>
         <div class="col-lg-4">
             <label class="sub-heading" for="source">Source of Recipe:</label>
-            <input type="text" id="source" name="source" placeholder="Book/Website">
+            <input type="text" id="source" name="source" placeholder="Book/Website" required>
         </div>
         <div class="col-lg-4">
             <button type="submit" id="add" class="alt-btn btn">Submit</button>
