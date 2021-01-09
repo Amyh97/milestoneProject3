@@ -1,15 +1,23 @@
 {% extends "base.html" %} {% block content %}
 <!---carosusel from bootstrap-->
-<div id="my-carousel" class="carousel slide" data-ride="carousel">
+<div id="my-carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        {% for recipe in recipes %}
-        <!-- if statement here adds active class to first element only as per bootstrap documentation -->
+        <!-- if statement here only adds active class to first element as per bootstrap documentation -->
+        {% for recipe in recipes%}
         <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
             <h3 class="sub-heading-middle carousel-heading">New recipes added by you....</h3>
             <img src="{{recipe.image}}" class="d-block w-100" alt="{{recipe.name}}" />
         </div>
         {% endfor %}
     </div>
+    <a class="carousel-control-prev" href="#my-carousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#my-carousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
 </div>
 <!--- end carousel code-->
 <!--- category cards, bootstrap cards-->
