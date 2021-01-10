@@ -15,6 +15,11 @@ header {
     background-color: #c48b9f;
 }
 
+.logo {
+    height: 184px;
+    width: 400px;
+}
+
 header h1 {
     font-family: "Sansita Swashed", sans-serif;
     font-size: 50px;
@@ -101,6 +106,10 @@ button a {
     color: black;
     text-align: center;
     margin-bottom: 5px;
+}
+
+#search {
+    width: 95%;
 }
 
 .alt-btn,
